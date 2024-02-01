@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  scroll-behavior: smooth;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background: #111111;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+    font-size: 8px;
+  }
+}
+pre {
+  background: transparent !important;
+}
+code * {
+  font-family: "JetBrains Mono" !important;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 4vw, 4.8rem) !important;
+  font-weight: 700;
+}
+
+.gradient-mask {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 0%,
+    black 60%,
+    transparent 97%
+  );
+}
