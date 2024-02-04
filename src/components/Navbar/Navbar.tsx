@@ -1,9 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Link } from "react-router-dom";
 import { ScrollToAnchor } from "../../router/Router";
+import MobileMenu from "./MobileMenu";
+import { useState } from "react";
+import Modal from "../Utils/Modal/Modal";
 
 const Navbar = () => {
   const scrollListener = ScrollToAnchor();
+
+  const [openMenu, setOpenMenu] = useState(false);
 
   return (
     <div className="flex sticky z-50 top-0 items-center justify-center flex-wrap border-b-[1px] border-neutral-800/70 backdrop-blur-sm px-12 py-4">
@@ -26,11 +31,20 @@ const Navbar = () => {
           <Link to={"/#ddd"}>Skills</Link>
           <Link to={"/dasd"}>Portfolio</Link>
         </div>
-        <div className="flex flex-col gap-[3px]">
-          <span className="block w-10 h-[2px] bg-neutral-500 rounded-full"></span>
-          <span className="block w-10 h-[2px] bg-neutral-500 rounded-full"></span>
-          <span className="block w-10 h-[2px] bg-neutral-500 rounded-full"></span>
-        </div>
+        <button onClick={() => setOpenMenu(true)}>
+          <div className="flex flex-col gap-[3px]">
+            <span className="block w-10 h-[2px] bg-neutral-500 rounded-full"></span>
+            <span className="block w-10 h-[2px] bg-neutral-500 rounded-full"></span>
+            <span className="block w-10 h-[2px] bg-neutral-500 rounded-full"></span>
+          </div>
+        </button>
+        <Modal isOpen={openMenu} handleClose={() => setOpenMenu(false)}>
+          <MobileMenu opened={openMenu} setOpen={setOpenMenu}>
+            <Link to={"/"}>About</Link>
+            <Link to={"/#ddd"}>Skills</Link>
+            <Link to={"/dasd"}>Portfolio</Link>
+          </MobileMenu>
+        </Modal>
       </nav>
     </div>
   );

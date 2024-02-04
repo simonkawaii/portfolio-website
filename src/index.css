@@ -58,7 +58,7 @@ h1 {
   font-size: clamp(2.4rem, 4vw, 4.8rem) !important;
   font-weight: 700;
 }
-.motion-span {
+.motion-h1 {
   font-size: clamp(2.4rem, 4vw, 4.8rem) !important;
   font-weight: 700;
 }
@@ -71,4 +71,14 @@ h1 {
     black 60%,
     transparent 97%
   );
+}
+body.modalOpened {
+  padding-right: 5px;
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  body.modalOpened {
+    padding-right: 0;
+    overflow: hidden;
+  }
 }

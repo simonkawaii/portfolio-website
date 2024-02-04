@@ -8,6 +8,7 @@ export default {
       },
       colors: {
         accent: "#e62441",
+        secondary: "#111111",
         code: {
           pink: "#d767c2",
           blue: "#3badf1",

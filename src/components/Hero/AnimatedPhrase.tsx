@@ -19,7 +19,7 @@ const AnimatedPhrase: React.FC<PhraseProps> = ({
   const isInView = useInView(container);
 
   return (
-    <div>
+    <motion.div>
       {splittedPhrase.map((word, index) => {
         return (
           <span
@@ -32,7 +32,7 @@ const AnimatedPhrase: React.FC<PhraseProps> = ({
               initial="initial"
               animate={isInView ? "open" : "closed"}
               custom={index}
-              className={clsx("motion-span", className)}
+              className={clsx("motion-h1", className)}
               {...props}
             >
               {word}
@@ -40,7 +40,7 @@ const AnimatedPhrase: React.FC<PhraseProps> = ({
           </span>
         );
       })}
-    </div>
+    </motion.div>
   );
 };
 
