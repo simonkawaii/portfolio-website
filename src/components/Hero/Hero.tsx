@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
+import AnimatedPhrase from "./AnimatedPhrase";
 
 const EmitBubble = ({ icon }: { icon: string }) => {
   const randomDelay = Math.random() * 3000;
@@ -13,11 +14,17 @@ const EmitBubble = ({ icon }: { icon: string }) => {
       transition={{
         repeat: Infinity,
         delay: randomDelay / 1000, // Convert milliseconds to seconds
-        duration: 4,
+        duration: 3,
         ease: "easeInOut",
       }}
     >
-      <img className="h-[3rem] w-[3rem]" src={icon ?? ""} alt="" />
+      <img
+        loading="lazy"
+        draggable="false"
+        className="select-none h-[3rem] w-[3rem]"
+        src={icon ?? ""}
+        alt={`${icon}`}
+      />
     </motion.div>
   );
 };
@@ -31,9 +38,6 @@ const Hero = () => {
     },
     {
       icon: "/Javascript.svg",
-    },
-    {
-      icon: "/databases.svg",
     },
 
     {
@@ -55,21 +59,19 @@ const Hero = () => {
   });
 
   return (
-    <div className="items-center w-full flex mt-12 flex-col h-full ">
-      <div className=" items-center w-full h-full  md:gap-24  flex flex-col  md:flex-row">
-        <div className=" items-center md:h-auto h-full flex w-full ">
+    <div className="items-center w-full flex gap-24 mt-12 flex-col h-full ">
+      <div className=" items-center gap-[5rem] w-full h-full  md:gap-0  flex flex-col  md:flex-row">
+        <div className=" items-center  md:h-auto h-full flex w-full ">
           <div className=" font-bold">
-            <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-red-600 to-accent">
-              Hi! I'm Szymon Kaliczak
-            </h1>
-            <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-400 via-white to-white">
-              I am an aspiring Frontend Developer
-            </h1>
+            <AnimatedPhrase
+              className="text-transparent  bg-clip-text bg-gradient-to-r from-accent via-red-600 to-accent"
+              phrase="Hi! I'm Szymon Kaliczak "
+            />
+            <AnimatedPhrase phrase="I am an aspiring Frontend Developer" />
           </div>
         </div>
 
-        <div className="relative flex justify-center items-center h-full w-full">
-          {/* <HeroSVG /> */}
+        <div className="relative  flex justify-center items-center  h-full w-full">
           <div className=" flex relative justify-center items-center">
             <div className="absolute flex items-center  inset-0 w-full m-auto ">
               <div className="text-red-500 w-full ">
@@ -82,15 +84,19 @@ const Hero = () => {
                 </AnimatePresence>
               </div>
             </div>
+
             <img
               src="/portfoliohero-1.png"
-              className="w-full h-full object-cover  md:object-contain   inset-0 gradient-mask "
+              draggable="false"
+              className="select-none h-full  w-[56rem] contrast-125 object-cover relative  md:object-contain 
+              inset-0 gradient-mask "
               alt="hero-img"
+              loading="eager"
             />
           </div>
         </div>
       </div>
-      <div className="w-full h-[300px] p-24   flex justify-center items-center">
+      <div className="w-full p-24   flex justify-center items-center">
         <motion.div
           animate={{
             transform: "translateY(2rem)",
@@ -106,8 +112,8 @@ const Hero = () => {
         >
           <svg
             width="50"
-            height="135"
-            viewBox="0 0 50 135"
+            height="150"
+            viewBox="0 0 50 150"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -116,41 +122,77 @@ const Hero = () => {
                 <rect
                   x="0.5"
                   y="0.5"
+                  className=" stroke-neutral-300"
                   width="49"
                   height="99"
                   rx="24.5"
-                  stroke="#ECECEC"
                 />
-                <rect
+                <motion.rect
+                  animate={{
+                    y: [0, 10],
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 2,
+                    repeatType: "mirror",
+
+                    ease: "easeInOut",
+                  }}
                   id="scorll"
                   x="23"
                   y="44"
                   width="4"
                   height="18"
                   rx="2"
-                  fill="#D9D9D9"
+                  className=" fill-neutral-300"
                 />
               </g>
-              <g id="Vector2">
+              <motion.g
+                id="Vector2"
+                animate={{
+                  y: [0, 10],
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 2,
+                  delay: 0.2,
+                  repeatType: "mirror",
+
+                  ease: "easeInOut",
+                }}
+              >
                 <path
                   d="M25 119.455L13.3 108L12 109.273L25 122L25 119.455Z"
-                  fill="#ECECEC"
+                  className=" fill-neutral-300"
                 />
                 <path
                   d="M25 122L38 109.273L36.7 108L25 119.455L25 122Z"
-                  fill="#ECECEC"
+                  className=" fill-neutral-300"
                 />
-              </g>
-              <g id="Vector1">
+              </motion.g>
+              <motion.g
+                id="Vector1"
+                animate={{
+                  y: [0, 10],
+                }}
+                transition={{
+                  repeat: Infinity,
+                  delay: 0.3,
+                  duration: 2,
+                  repeatType: "mirror",
+
+                  ease: "easeInOut",
+                }}
+              >
                 <path
                   d="M25 132.455L13.3 121L12 122.273L25 135L25 132.455Z"
-                  fill="#ECECEC"
+                  className=" fill-neutral-300"
                 />
                 <path
                   d="M25 135L38 122.273L36.7 121L25 132.455L25 135Z"
-                  fill="#ECECEC"
+                  className=" fill-neutral-300"
                 />
-              </g>
+              </motion.g>
             </g>
           </svg>
 

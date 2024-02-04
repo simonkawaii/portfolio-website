@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="absolute  z-[-1]  bottom-0 left-0 w-full overflow-hidden content-[''] h-full">
         <div className="absolute bottom-0 left-0 w-full bg-neutral-700 content-[''] blur-lg h-1"></div>
       </div>
-      <nav className="md:flex hidden w-full max-w-screen-xl items-center justify-between gap-8  ">
+      <nav className="xl:flex hidden w-full max-w-screen-xl items-center justify-between gap-8  ">
         <div>Szymon Kaliczak</div>
         <div className="flex absolute w-full left-0 right-0 justify-center items-center gap-8 ">
           <Link to={"/"}>About</Link>
@@ -19,7 +19,7 @@ const Navbar = () => {
         </div>
         <div>Action</div>
       </nav>
-      <nav className="md:hidden flex w-full max-w-screen-xl items-center justify-between gap-8  ">
+      <nav className="xl:hidden flex w-full max-w-screen-xl items-center justify-between gap-8  ">
         <div>Szymon Kaliczak</div>
         <div className=" hidden  items-center gap-8 ">
           <Link to={"/"}>About</Link>
