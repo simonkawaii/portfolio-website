@@ -11,15 +11,17 @@
   },
   "dependencies": {
     "@react-three/drei": "^9.97.0",
-    "@react-three/fiber": "^8.15.15",
+    "@react-three/fiber": "^8.15.16",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.3",
+    "gsap": "^3.12.5",
     "maath": "^0.10.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.3",
-    "react-syntax-highlighter": "^15.5.0"
+    "react-syntax-highlighter": "^15.5.0",
+    "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

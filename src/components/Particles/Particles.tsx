@@ -1,17 +1,22 @@
 import { useState, useRef, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Preload } from "@react-three/drei";
+// eslint-disable-next-line
+// @ts-ignore
 import * as random from "maath/random/dist/maath-random.esm";
 
-function Background_Stars(props) {
-  const [colorData, setcolorData] = useState<string>("#e62441");
-  const ref = useRef();
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function BackgroundStars(props: any) {
+  const colorData = "#e62441";
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const ref: any = useRef();
+
   const [sphere] = useState(() =>
     random.inSphere(new Float32Array(5000), { radius: 1.2 })
   );
-  console.log(sphere);
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     ref.current.rotation.x -= delta / 10;
     ref.current.rotation.y -= delta / 15;
   });
@@ -36,7 +41,7 @@ const StarsCanvas = () => {
     <div className={`w-full  h-auto fixed inset-0 z-[-2]`}>
       <Canvas camera={{ position: [0, 0, 1] }}>
         <Suspense fallback={null}>
-          <Background_Stars />
+          <BackgroundStars />
         </Suspense>
 
         <Preload all />

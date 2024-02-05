@@ -1,5 +1,5 @@
 import React, { ButtonHTMLAttributes } from "react";
-import clsx from "clsx";
+import cn from "../../utils/cn";
 
 import { VariantProps, cva } from "class-variance-authority";
 import { Link } from "react-router-dom";
@@ -45,7 +45,7 @@ const Button: React.FC<IButtonProps> = ({
     <button
       {...props}
       type="button"
-      className={clsx(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size, className }))}
     >
       {children}
     </button>
@@ -54,7 +54,7 @@ const Button: React.FC<IButtonProps> = ({
       <button
         {...props}
         type="button"
-        className={clsx(buttonVariants({ variant, size, className }))}
+        className={cn(buttonVariants({ variant, size, className }))}
       >
         {children}
       </button>

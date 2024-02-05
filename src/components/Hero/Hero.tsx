@@ -1,5 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
 import AnimatedPhrase from "./AnimatedPhrase";
+import { slideIn } from "../../Animations/Animations";
+import ScrollBox from "./ScrollBox";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const EmitBubble = ({ icon }: { icon: string }) => {
   const randomDelay = Math.random() * 3000;
@@ -21,6 +26,8 @@ const EmitBubble = ({ icon }: { icon: string }) => {
       <img
         loading="lazy"
         draggable="false"
+        height={30}
+        width={30}
         className="select-none h-[3rem] w-[3rem]"
         src={icon ?? ""}
         alt={`${icon}`}
@@ -58,8 +65,27 @@ const Hero = () => {
     return <EmitBubble key={`${icon}-${index}`} icon={icon} />;
   });
 
+  const ref = useRef(null);
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: "0%",
+        end: "100%",
+        scrub: true,
+      },
+    });
+    timeline.to(ref.current, { y: "-100px" });
+  }, []);
+
   return (
-    <div className="items-center w-full flex gap-24 mt-12 flex-col h-full ">
+    <div
+      ref={ref}
+      className="items-center w-full flex gap-24 mt-12 flex-col h-full "
+      id="hero"
+    >
       <div className=" items-center gap-[5rem] w-full h-full  md:gap-0  flex flex-col  md:flex-row">
         <div className=" items-center  md:h-auto h-full flex w-full ">
           <h1 className="font-bold">
@@ -67,11 +93,21 @@ const Hero = () => {
               className="text-transparent  bg-clip-text bg-gradient-to-r from-accent via-red-600 to-accent"
               phrase="Hi! I'm Szymon Kaliczak "
             />
-            <AnimatedPhrase phrase="I am an aspiring Frontend Developer" />
+            <AnimatedPhrase
+              className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white"
+              phrase="Passionate Frontend Developer and UI designer"
+            >
+              <div className="absolute inset-0 w-full h-full bg-red-400/30 bg-blend-color bg-clip-text z-10"></div>
+            </AnimatedPhrase>
           </h1>
         </div>
 
-        <div className="relative  flex justify-center items-center h-full w-full">
+        <motion.div
+          variants={slideIn}
+          initial="initial"
+          animate="visible"
+          className="relative  flex justify-center items-center h-full w-full"
+        >
           <div className=" flex relative justify-center items-center">
             <div className="absolute flex items-center inset-0 w-full m-auto">
               <AnimatePresence>
@@ -83,143 +119,38 @@ const Hero = () => {
               </AnimatePresence>
             </div>
 
-            <img
-              src="/portfoliohero-1.png"
-              draggable="false"
-              className="select-none h-full  w-[56rem] contrast-125 object-cover relative  md:object-contain 
+            <picture>
+              <source
+                srcSet="/portfoliohero-1.webp"
+                draggable="false"
+                className="select-none contrast-125 object-cover relative  md:object-contain 
               inset-0 gradient-mask "
-              alt="hero-img"
-              loading="eager"
-            />
+                type="image/webp"
+              />
+              <source
+                srcSet="/portfoliohero-1.png"
+                draggable="false"
+                className="select-none contrast-125 object-cover relative  md:object-contain 
+              inset-0 gradient-mask "
+                type="image/png"
+              />
+              <img
+                srcSet="/portfoliohero-1.webp"
+                draggable="false"
+                className="select-none contrast-125 object-cover relative  md:object-contain 
+              inset-0 gradient-mask "
+                alt="hero-img"
+                loading="lazy"
+                height={520}
+                width={560}
+                rel="preload"
+                decoding="async"
+              />
+            </picture>
           </div>
-        </div>
-      </div>
-      <div className="w-full p-24   flex justify-center items-center">
-        <motion.div
-          animate={{
-            transform: "translateY(2rem)",
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 2,
-            repeatType: "mirror",
-
-            ease: "easeInOut",
-          }}
-          className="h-[15rem] w-[5rem] flex flex-col justify-end items-center  "
-        >
-          <svg
-            width="50"
-            height="150"
-            viewBox="0 0 50 150"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g id="Group 25">
-              <g id="frame">
-                <rect
-                  x="0.5"
-                  y="0.5"
-                  className=" stroke-neutral-300"
-                  width="49"
-                  height="99"
-                  rx="24.5"
-                />
-                <motion.rect
-                  animate={{
-                    y: [0, 10],
-                  }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: 2,
-                    repeatType: "mirror",
-
-                    ease: "easeInOut",
-                  }}
-                  id="scorll"
-                  x="23"
-                  y="44"
-                  width="4"
-                  height="18"
-                  rx="2"
-                  className=" fill-neutral-300"
-                />
-              </g>
-              <motion.g
-                id="Vector2"
-                animate={{
-                  y: [0, 10],
-                }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 2,
-                  delay: 0.2,
-                  repeatType: "mirror",
-
-                  ease: "easeInOut",
-                }}
-              >
-                <path
-                  d="M25 119.455L13.3 108L12 109.273L25 122L25 119.455Z"
-                  className=" fill-neutral-300"
-                />
-                <path
-                  d="M25 122L38 109.273L36.7 108L25 119.455L25 122Z"
-                  className=" fill-neutral-300"
-                />
-              </motion.g>
-              <motion.g
-                id="Vector1"
-                animate={{
-                  y: [0, 10],
-                }}
-                transition={{
-                  repeat: Infinity,
-                  delay: 0.3,
-                  duration: 2,
-                  repeatType: "mirror",
-
-                  ease: "easeInOut",
-                }}
-              >
-                <path
-                  d="M25 132.455L13.3 121L12 122.273L25 135L25 132.455Z"
-                  className=" fill-neutral-300"
-                />
-                <path
-                  d="M25 135L38 122.273L36.7 121L25 132.455L25 135Z"
-                  className=" fill-neutral-300"
-                />
-              </motion.g>
-            </g>
-          </svg>
-
-          {/* <svg
-            width="15"
-            height="54"
-            className="w-[1.25rem]"
-            viewBox="0 0 28 54"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g id="Group 2">
-              <path
-                id="Polygon 2"
-                strokeLinecap="round"
-                d="M14 54L1.87565 33L26.1244 33L14 54Z"
-                fill="white"
-              />
-              <path
-                id="Polygon 3"
-                className="-translate-y-2"
-                d="M14 28L1.87565 7L26.1244 7L14 28Z"
-                fill="white"
-                strokeLinecap="round"
-              />
-            </g>
-          </svg> */}
         </motion.div>
       </div>
+      <ScrollBox />
     </div>
   );
 };

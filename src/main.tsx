@@ -8,6 +8,13 @@ import { RouterProvider } from "react-router-dom";
 //canvas
 import StarsCanvas from "./components/Particles/Particles.tsx";
 
+//gsap
+import { gsap } from "gsap";
+
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 //styles
 import "./index.css";
 

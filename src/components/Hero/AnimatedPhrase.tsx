@@ -1,28 +1,34 @@
-import { motion, useInView } from "framer-motion";
-import { slideUp } from "./AnimConfig";
 import { useRef } from "react";
+
+import { motion, useInView } from "framer-motion";
 import { HTMLMotionProps } from "framer-motion";
-import clsx from "clsx";
+import { slideUp } from "./AnimConfig";
+
+import cn from "../../utils/cn";
 
 interface PhraseProps extends HTMLMotionProps<"span"> {
   phrase: string;
+  once?: boolean;
+  children?: React.ReactNode;
 }
 
 const AnimatedPhrase: React.FC<PhraseProps> = ({
   phrase,
   className,
+  once = true,
+  children,
   ...props
 }) => {
   const splittedPhrase = phrase.split(" ");
 
   const container = useRef(null);
-  const isInView = useInView(container);
+  const isInView = useInView(container, { once: once });
 
   return (
-    <motion.div>
+    <motion.div className="relative">
       {splittedPhrase.map((word, index) => {
         return (
-          <span
+          <motion.span
             ref={container}
             className="inline-flex  mr-4 w overflow-hidden relative"
             key={`${word}-${index}`}
@@ -32,14 +38,15 @@ const AnimatedPhrase: React.FC<PhraseProps> = ({
               initial="initial"
               animate={isInView ? "open" : "closed"}
               custom={index}
-              className={clsx("motion-h1", className)}
+              className={cn("motion-h1", className)}
               {...props}
             >
               {word}
             </motion.span>
-          </span>
+          </motion.span>
         );
       })}
+      {children}
     </motion.div>
   );
 };

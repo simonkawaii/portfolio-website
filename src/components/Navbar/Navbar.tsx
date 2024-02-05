@@ -1,13 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Link } from "react-router-dom";
-import { ScrollToAnchor } from "../../router/Router";
 import MobileMenu from "./MobileMenu";
 import { useState } from "react";
 import Modal from "../Utils/Modal/Modal";
 
 const Navbar = () => {
-  const scrollListener = ScrollToAnchor();
-
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
@@ -18,18 +15,18 @@ const Navbar = () => {
       <nav className="xl:flex hidden w-full max-w-screen-xl items-center justify-between gap-8  ">
         <div>Szymon Kaliczak</div>
         <div className="flex absolute w-full left-0 right-0 justify-center items-center gap-8 ">
-          <Link to={"/"}>About</Link>
-          <Link to={"/#ddd"}>Skills</Link>
-          <Link to={"/dasd"}>Portfolio</Link>
+          <Link to={"/#about"}>About</Link>
+          <Link to={"/#skills"}>Skills</Link>
+          <Link to={"/#portfolio"}>Portfolio</Link>
         </div>
         <div>Action</div>
       </nav>
       <nav className="xl:hidden flex w-full max-w-screen-xl items-center justify-between gap-8  ">
         <div>Szymon Kaliczak</div>
         <div className=" hidden  items-center gap-8 ">
-          <Link to={"/"}>About</Link>
-          <Link to={"/#ddd"}>Skills</Link>
-          <Link to={"/dasd"}>Portfolio</Link>
+          <Link to={"/#about"}>About</Link>
+          <Link to={"/#skills"}>Skills</Link>
+          <Link to={"/#portfolio"}>Portfolio</Link>
         </div>
         <button onClick={() => setOpenMenu(true)}>
           <div className="flex flex-col gap-[3px]">
