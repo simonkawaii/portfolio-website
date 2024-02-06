@@ -4,9 +4,10 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import Section from "../../components/Wrappers/Section";
 import AnimatedPhrase from "../../components/Hero/AnimatedPhrase";
-const codeString = `import Hero from "../../roles/frontend-developer";
-import Passion from "../../config/heart.ts";
-import HardWork from "../hard-work.ts";
+
+const codeString = `import Hero from "../../roles/Frontend-Developer.tsx";
+import Passion from "../../config/Heart.tsx";
+import HardWork from "../Hard-Work.tsx";
   
 const Component = () => {
 
@@ -28,6 +29,8 @@ const Component = () => {
       { React: ["ReactJS", "Redux", "Next.js"] },
       { Vue: ["Vue 3", "Pinia"] },
       { Style: ["SCSS", "Tailwind CSS", "Material UI", "SVG"] },
+      { Cloud: ["Firebase"] },
+      { Testing: ["Cypress"] }.
     ],
   };
 
@@ -88,9 +91,6 @@ const CodeSection = () => {
               transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
             }}
           >
-            {/* <GenerateCode isInView={isInView} /> */}
-            {/* <pre className="opacity-0">{codeStringSeparated}</pre> */}
-
             {isInView ? (
               <AnimatePresence>
                 <>

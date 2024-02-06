@@ -8,19 +8,17 @@ import { RouterProvider } from "react-router-dom";
 //canvas
 import StarsCanvas from "./components/Particles/Particles.tsx";
 
-//gsap
-import { gsap } from "gsap";
-
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+//context
+import { StarmodeProvider } from "./Context/StarModeContext.tsx";
 
 //styles
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={RouterConfig} />
-    <StarsCanvas />
+    <StarmodeProvider>
+      <RouterProvider router={RouterConfig} />
+      <StarsCanvas />
+    </StarmodeProvider>
   </React.StrictMode>
 );

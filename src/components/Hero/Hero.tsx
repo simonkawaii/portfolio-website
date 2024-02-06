@@ -74,9 +74,7 @@ const Hero = () => {
             <AnimatedPhrase
               className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white"
               phrase="Passionate Frontend Developer and UI designer"
-            >
-              <div className="absolute inset-0 w-full h-full bg-red-400/30 bg-blend-color bg-clip-text z-10"></div>
-            </AnimatedPhrase>
+            ></AnimatedPhrase>
           </h1>
         </div>
 

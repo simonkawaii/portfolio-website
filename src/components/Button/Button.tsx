@@ -4,26 +4,29 @@ import cn from "../../utils/cn";
 import { VariantProps, cva } from "class-variance-authority";
 import { Link } from "react-router-dom";
 
-const buttonVariants = cva("px-12 py-4  rounded-md", {
-  variants: {
-    variant: {
-      primary: "bg-blue-400",
-      destructive: "bg-red-400",
-      outline: "border-2 border-red-400",
-      subtle: "bg-blue-400/40",
-      ghost: "bg-gray-500/50",
-      link: "bg-blue-500 dashed",
+const buttonVariants = cva(
+  "px-12 py-4 flex justify-center duration-200 items-center relative rounded-md",
+  {
+    variants: {
+      variant: {
+        primary: "bg-accent text-white",
+        destructive: "bg-red-400",
+        outline: "border-[1px] border-neutral-700 hover:bg-neutral-600/50",
+        subtle: "bg-blue-400/40",
+        ghost: "bg-gray-500/50",
+        link: "bg-blue-500 dashed",
+      },
+      size: {
+        sm: "sm",
+        lg: "lg",
+      },
     },
-    size: {
-      sm: "sm",
-      lg: "lg",
+    defaultVariants: {
+      variant: "primary",
+      size: "sm",
     },
-  },
-  defaultVariants: {
-    variant: "primary",
-    size: "sm",
-  },
-});
+  }
+);
 
 interface IButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,

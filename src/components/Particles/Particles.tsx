@@ -4,6 +4,7 @@ import { Points, PointMaterial, Preload } from "@react-three/drei";
 // eslint-disable-next-line
 // @ts-ignore
 import * as random from "maath/random/dist/maath-random.esm";
+import { useStarmode } from "../../Context/StarModeContext";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function BackgroundStars(props: any) {
@@ -37,15 +38,19 @@ function BackgroundStars(props: any) {
 }
 
 const StarsCanvas = () => {
+  const { starmode } = useStarmode();
+
   return (
     <div className={`w-full  h-auto fixed inset-0 z-[-2]`}>
-      <Canvas camera={{ position: [0, 0, 1] }}>
-        <Suspense fallback={null}>
-          <BackgroundStars />
-        </Suspense>
+      {starmode === "true" ? (
+        <Canvas camera={{ position: [0, 0, 1] }}>
+          <Suspense fallback={null}>
+            <BackgroundStars />
+          </Suspense>
 
-        <Preload all />
-      </Canvas>
+          <Preload all />
+        </Canvas>
+      ) : null}
     </div>
   );
 };

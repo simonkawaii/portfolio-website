@@ -13,7 +13,6 @@ const About = () => {
         trigger: document.documentElement,
         start: "0",
         end: "100%",
-        markers: true,
         scrub: true,
       },
     });

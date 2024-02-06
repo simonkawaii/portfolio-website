@@ -4,6 +4,7 @@ import MobileMenu from "./MobileMenu";
 import { useState } from "react";
 import Modal from "../Utils/Modal/Modal";
 import MenuLinks from "./MenuLinks";
+import ParticlesSwitch from "../Particles/ParticlesSwitch";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -18,7 +19,9 @@ const Navbar = () => {
         <div className="flex absolute w-full left-0 right-0 justify-center items-center gap-8 ">
           <MenuLinks />
         </div>
-        <div>Action</div>
+        <div className="z-20">
+          <ParticlesSwitch>lol</ParticlesSwitch>
+        </div>
       </nav>
       <nav className="xl:hidden flex w-full max-w-screen-xl items-center justify-between gap-8  ">
         <div>Szymon Kaliczak</div>
@@ -33,6 +36,9 @@ const Navbar = () => {
         <Modal isOpen={openMenu} handleClose={() => setOpenMenu(false)}>
           <MobileMenu opened={openMenu} setOpen={setOpenMenu}>
             <MenuLinks></MenuLinks>
+            <div className="z-20">
+              <ParticlesSwitch>lol</ParticlesSwitch>
+            </div>
           </MobileMenu>
         </Modal>
       </nav>
