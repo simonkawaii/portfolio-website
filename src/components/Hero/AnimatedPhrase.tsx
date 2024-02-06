@@ -22,7 +22,7 @@ const AnimatedPhrase: React.FC<PhraseProps> = ({
   const splittedPhrase = phrase.split(" ");
 
   const container = useRef(null);
-  const isInView = useInView(container, { once: once });
+  const isInView = useInView(container, { once: once, amount: 0.7 });
 
   return (
     <motion.div className="relative">

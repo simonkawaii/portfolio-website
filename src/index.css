@@ -57,12 +57,19 @@ h1 {
   font-size: clamp(2.4rem, 4vw, 4.8rem) !important;
   font-weight: 700;
 }
+
+h2 {
+  font-size: clamp(2rem, 3vw, 3.2rem) !important;
+  font-weight: 700;
+}
+
 .motion-h1 {
   font-size: clamp(2.4rem, 4vw, 4.8rem) !important;
   font-weight: 700;
 }
+
 .motion-h2 {
-  font-size: clamp(2rem, 3vw, 3.6rem) !important;
+  font-size: clamp(2rem, 3vw, 3.2rem) !important;
   font-weight: 700;
 }
 
@@ -75,6 +82,17 @@ h1 {
     transparent 97%
   );
 }
+
+.gradient-mask-sides {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
 body.modalOpened {
   padding-right: 5px;
   overflow: hidden;

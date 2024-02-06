@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import Section from "../../components/Wrappers/Section";
+import AnimatedPhrase from "../../components/Hero/AnimatedPhrase";
 const codeString = `import Hero from "../../roles/frontend-developer";
 import Passion from "../../config/heart.ts";
 import HardWork from "../hard-work.ts";
@@ -57,7 +58,7 @@ const GenerateCode = ({ isInView }: { isInView: boolean }) => {
   }, [isInView]);
 
   return (
-    <div className="contrast-150 absolute inset-8">
+    <div className="contrast-150  absolute inset-8">
       <SyntaxHighlighter language="javascript" style={atomOneDark}>
         {codeText}
       </SyntaxHighlighter>
@@ -75,6 +76,9 @@ const CodeSection = () => {
   }, [isInView]);
   return (
     <section ref={container} className="max-w-screen-xl ">
+      <div className="py-[5rem] md:py-[10rem] flex flex-col justify-center items-center">
+        <AnimatedPhrase className="text-center" phrase={"Summary"} />
+      </div>
       <Section>
         <span className="[&>*]:font-code [&>*]:leading-[1.5] font-code text-2xl [&>*]:text-2xl">
           <div

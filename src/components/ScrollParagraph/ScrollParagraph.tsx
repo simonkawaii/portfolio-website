@@ -15,7 +15,7 @@ const ScrollParagraph: React.FC<ScrollParagraphProps> = ({
 
   const { scrollYProgress } = useScroll({
     target: paragraph,
-    offset: ["start 0.8", "start 0.15"],
+    offset: ["start 0.9", "start 0.37"],
   });
 
   const words = phrase.split("");
@@ -29,7 +29,7 @@ const ScrollParagraph: React.FC<ScrollParagraphProps> = ({
         key={`${word}-${index}`}
         range={[start, end]}
         progress={scrollYProgress}
-        className={cn(className)}
+        className={cn("text-transparent ", className)}
       >
         {word}
       </Word>

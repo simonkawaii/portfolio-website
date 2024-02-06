@@ -2,9 +2,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import AnimatedPhrase from "./AnimatedPhrase";
 import { slideIn } from "../../Animations/Animations";
 import ScrollBox from "./ScrollBox";
-import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const EmitBubble = ({ icon }: { icon: string }) => {
   const randomDelay = Math.random() * 3000;
@@ -38,26 +35,23 @@ const EmitBubble = ({ icon }: { icon: string }) => {
 const Hero = () => {
   const bubbles = [
     {
-      icon: "/CSS3.svg",
+      icon: "/icons/react.svg",
     },
     {
-      icon: "/react.svg",
-    },
-    {
-      icon: "/Javascript.svg",
+      icon: "/icons/Javascript.svg",
     },
 
     {
-      icon: "/CSS3.svg",
+      icon: "/icons/CSS3.svg",
     },
     {
-      icon: "/git.svg",
+      icon: "/icons/git.svg",
     },
     {
-      icon: "/HTML5.svg",
+      icon: "/icons/HTML5.svg",
     },
     {
-      icon: "/TailwindCSS.svg",
+      icon: "/icons/TailwindCSS.svg",
     },
   ];
 
@@ -65,24 +59,8 @@ const Hero = () => {
     return <EmitBubble key={`${icon}-${index}`} icon={icon} />;
   });
 
-  const ref = useRef(null);
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: document.documentElement,
-        start: "0%",
-        end: "100%",
-        scrub: true,
-      },
-    });
-    timeline.to(ref.current, { y: "-100px" });
-  }, []);
-
   return (
     <div
-      ref={ref}
       className="items-center w-full flex gap-24 mt-12 flex-col h-full "
       id="hero"
     >

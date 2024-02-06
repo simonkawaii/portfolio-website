@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import MobileMenu from "./MobileMenu";
 import { useState } from "react";
 import Modal from "../Utils/Modal/Modal";
+import MenuLinks from "./MenuLinks";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -15,19 +16,13 @@ const Navbar = () => {
       <nav className="xl:flex hidden w-full max-w-screen-xl items-center justify-between gap-8  ">
         <div>Szymon Kaliczak</div>
         <div className="flex absolute w-full left-0 right-0 justify-center items-center gap-8 ">
-          <Link to={"/#about"}>About</Link>
-          <Link to={"/#skills"}>Skills</Link>
-          <Link to={"/#portfolio"}>Portfolio</Link>
+          <MenuLinks />
         </div>
         <div>Action</div>
       </nav>
       <nav className="xl:hidden flex w-full max-w-screen-xl items-center justify-between gap-8  ">
         <div>Szymon Kaliczak</div>
-        <div className=" hidden  items-center gap-8 ">
-          <Link to={"/#about"}>About</Link>
-          <Link to={"/#skills"}>Skills</Link>
-          <Link to={"/#portfolio"}>Portfolio</Link>
-        </div>
+
         <button onClick={() => setOpenMenu(true)}>
           <div className="flex flex-col gap-[3px]">
             <span className="block w-10 h-[2px] bg-neutral-500 rounded-full"></span>
@@ -37,9 +32,7 @@ const Navbar = () => {
         </button>
         <Modal isOpen={openMenu} handleClose={() => setOpenMenu(false)}>
           <MobileMenu opened={openMenu} setOpen={setOpenMenu}>
-            <Link to={"/"}>About</Link>
-            <Link to={"/#ddd"}>Skills</Link>
-            <Link to={"/dasd"}>Portfolio</Link>
+            <MenuLinks></MenuLinks>
           </MobileMenu>
         </Modal>
       </nav>

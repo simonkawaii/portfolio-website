@@ -12,7 +12,7 @@ interface WordProps extends HTMLMotionProps<"span"> {
 }
 
 const Word: React.FC<WordProps> = ({ children, range, progress, ...props }) => {
-  const opacity = useTransform(progress, range, [0.1, 1]);
+  const opacity = useTransform(progress, range, [0.5, 1]);
 
   return (
     <motion.span style={{ opacity }} {...props}>
