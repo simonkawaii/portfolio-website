@@ -15,7 +15,7 @@ const ScrollParagraph: React.FC<ScrollParagraphProps> = ({
 
   const { scrollYProgress } = useScroll({
     target: paragraph,
-    offset: ["start 0.9", "start 0.37"],
+    offset: ["start 0.9", "start 0.3"],
   });
 
   const words = phrase.split("");

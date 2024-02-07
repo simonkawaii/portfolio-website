@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import AnimatedPhrase from "./AnimatedPhrase";
 import { slideIn } from "../../Animations/Animations";
 import ScrollBox from "./ScrollBox";
+import Section from "../Wrappers/Section";
 
 const EmitBubble = ({ icon }: { icon: string }) => {
   const randomDelay = Math.random() * 3000;
@@ -60,11 +61,8 @@ const Hero = () => {
   });
 
   return (
-    <div
-      className="items-center w-full flex gap-24 mt-12 flex-col h-full "
-      id="hero"
-    >
-      <div className=" items-center gap-[5rem] w-full h-full  md:gap-0  flex flex-col  md:flex-row">
+    <Section paddings={"none"} className="gap-12" id="hero">
+      <div className=" items-center gap-[5rem] w-full  h-full mt-12  md:gap-0  flex flex-col  md:flex-row">
         <div className=" items-center  md:h-auto h-full flex w-full ">
           <h1 className="font-bold">
             <AnimatedPhrase
@@ -84,7 +82,7 @@ const Hero = () => {
           animate="visible"
           className="relative  flex justify-center items-center h-full w-full"
         >
-          <div className=" flex relative justify-center items-center">
+          <div className=" flex  relative justify-center items-center">
             <div className="absolute flex items-center inset-0 w-full m-auto">
               <AnimatePresence>
                 <div className=" justify-between w-full flex">
@@ -127,7 +125,7 @@ const Hero = () => {
         </motion.div>
       </div>
       <ScrollBox />
-    </div>
+    </Section>
   );
 };
 

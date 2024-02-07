@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 const links = [
@@ -27,7 +26,6 @@ const links = [
 const MenuLinks = () => {
   const { hash } = useLocation();
 
-  console.log(hash);
   const renderLinks = links.map(({ label, url }, index) => {
     return (
       <Link

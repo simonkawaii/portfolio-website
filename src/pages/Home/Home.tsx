@@ -1,9 +1,9 @@
-import Hero from "../../components/Hero/Hero";
 import DefaultLayout from "../../layouts/DefaultLayout";
 
+import Hero from "../../components/Hero/Hero";
 import About from "./About";
 import CodeSection from "./CodeSection";
-import Contact from "./Contact";
+import Offer from "./Offer";
 import Skills from "./Skills";
 
 const Home = () => {
@@ -13,8 +13,8 @@ const Home = () => {
         <Hero />
         <About />
         <Skills />
+        <Offer />
         <CodeSection />
-        <Contact />
       </DefaultLayout>
     </>
   );

@@ -4,6 +4,7 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import Section from "../../components/Wrappers/Section";
 import AnimatedPhrase from "../../components/Hero/AnimatedPhrase";
+import Card from "../../components/Wrappers/Card";
 
 const codeString = `import Hero from "../../roles/Frontend-Developer.tsx";
 import Passion from "../../config/Heart.tsx";
@@ -43,7 +44,7 @@ const GenerateCode = ({ isInView }: { isInView: boolean }) => {
   useEffect(() => {
     if (isInView) {
       let index = 0;
-      const intervalDuration = 20;
+      const intervalDuration = 10;
       let text = "";
       const interval = setInterval(() => {
         text += codeStringSeparated[index];
@@ -78,11 +79,11 @@ const CodeSection = () => {
     console.log("Element is in view: ", isInView);
   }, [isInView]);
   return (
-    <section ref={container} className="max-w-screen-xl ">
+    <Section ref={container}>
       <div className="py-[5rem] md:py-[10rem] flex flex-col justify-center items-center">
         <AnimatedPhrase className="text-center" phrase={"Summary"} />
       </div>
-      <Section>
+      <Card>
         <span className="[&>*]:font-code [&>*]:leading-[1.5] font-code text-2xl [&>*]:text-2xl">
           <div
             style={{
@@ -109,8 +110,8 @@ const CodeSection = () => {
             ) : null}
           </div>
         </span>
-      </Section>
-    </section>
+      </Card>
+    </Section>
   );
 };
 

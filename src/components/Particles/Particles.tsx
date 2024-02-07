@@ -1,4 +1,4 @@
-import { useState, useRef, Suspense } from "react";
+import { useState, useRef, Suspense, ElementRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Preload } from "@react-three/drei";
 // eslint-disable-next-line
@@ -11,7 +11,7 @@ function BackgroundStars(props: any) {
   const colorData = "#e62441";
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const ref: any = useRef();
+  const ref: any = useRef<ElementRef<any>>();
 
   const [sphere] = useState(() =>
     random.inSphere(new Float32Array(5000), { radius: 1.2 })

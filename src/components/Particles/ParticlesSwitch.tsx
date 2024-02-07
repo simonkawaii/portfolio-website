@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Button } from "../Button/Button";
 import { motion } from "framer-motion";
 import cn from "../../utils/cn";
@@ -65,7 +64,14 @@ const ParticlesSwitch = () => {
           {renderStars}
         </div>
       ) : null}
-      <img src="./stars.svg" className=" inset-0 w-full h-[3rem]" alt="" />
+      <img
+        src="./stars.svg"
+        className={`${
+          starmode === "false" ? "saturate-0 brightness-[4]" : "saturate-100"
+        } inset-0 w-full h-[3rem]`}
+        alt=""
+      />
+      {starmode === "true" ? <>on</> : <>off</>}
     </Button>
   );
 };
