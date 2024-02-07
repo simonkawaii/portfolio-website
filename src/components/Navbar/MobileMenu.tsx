@@ -13,7 +13,7 @@ const MobileMenu: React.FC<IMenuButtonTypes> = ({
 }) => {
   return (
     opened && (
-      <div className="h-full p-8 bg-secondary  flex w-full md:w-[300px] z-50">
+      <div className="h-full p-8 bg-black  flex w-full md:w-[300px] z-50">
         <div className="absolute  z-[-1]  bottom-0 left-0 w-full overflow-hidden content-[''] h-full">
           <div className="absolute bottom-0 left-0 w-full bg-neutral-700 content-[''] blur-lg h-1"></div>
         </div>

@@ -82,6 +82,16 @@ h2 {
   );
 }
 
+.gradient-mask-hero {
+  mask-image: linear-gradient(
+    to right,
+    transparent -20%,
+    black 30%,
+    black 60%,
+    transparent 120%
+  );
+}
+
 body.modalOpened {
   padding-right: 5px;
   overflow: hidden;

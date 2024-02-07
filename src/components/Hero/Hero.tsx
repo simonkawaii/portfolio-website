@@ -53,7 +53,7 @@ const Hero = () => {
 
   return (
     <Section paddings={"none"} className="gap-12" id="hero">
-      <div className=" items-center gap-[5rem] w-full  h-full mt-12  md:gap-0  flex flex-col  md:flex-row">
+      <div className=" items-center gap-[10rem] w-full  h-full mt-12  md:gap-0  flex flex-col  md:flex-row">
         <div className=" items-center  md:h-auto h-full flex w-full ">
           <h1 className="font-bold">
             <AnimatedPhrase

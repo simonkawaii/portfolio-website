@@ -2,11 +2,11 @@ import { Button } from "../../components/Button/Button";
 
 const Contact = () => {
   return (
-    <section className="bg-[#111] border-y-[1px]  border-neutral-800 rounded-none flex   items-center justify-center flex-wrap  ">
-      <div className="flex flex-col w-full gap-8 max-w-screen-xl p-8 h-full">
+    <section className="bg-black border-y-[1px]  border-neutral-800 rounded-none flex   items-center justify-center flex-wrap p-8 py-[7rem]  ">
+      <div className="flex flex-col w-full gap-8 max-w-screen-xl h-full">
         <div>
           <h2>Contact</h2>
-          <p className="text-accent tracking-wider">Let's get linked in!</p>
+          <p className="text-secondary tracking-wide">Let's get linked in!</p>
         </div>
         <form
           action=""
@@ -20,7 +20,7 @@ const Contact = () => {
               Email
             </label>
             <input
-              className="px-4 py-8 shadow appearance-none border border-neutral-800 rounded w-full  bg-transparent leading-tight focus:outline-none focus:border-neutral-400 focus:ring-2 focus:ring-white/50"
+              className="px-4 py-8  appearance-none border-b border-neutral-800 rounded w-full  bg-transparent leading-tight focus:outline-none  focus:border-accent-opposite"
               id="contact-email"
               type="text"
             />
@@ -33,7 +33,7 @@ const Contact = () => {
               Title
             </label>
             <input
-              className="px-4 py-8 shadow appearance-none border border-neutral-800 rounded w-full  bg-transparent leading-tight focus:outline-none focus:border-neutral-400 focus:ring-2 focus:ring-white/50"
+              className="px-4 py-8  appearance-none border-b border-neutral-800 rounded w-full  bg-transparent leading-tight focus:outline-none  focus:border-accent-opposite"
               id="contact-title"
               type="text"
             />
@@ -43,8 +43,8 @@ const Contact = () => {
               Message
             </label>
             <textarea
-              className="px-4 py-8 shadow appearance-none border border-neutral-800 rounded w-full  bg-transparent leading-tight  focus:border-neutral-400
-              focus:outline-none  focus:ring-4 focus:ring-white/50"
+              className="px-4 py-8  appearance-none border-b border-neutral-800 rounded w-full  bg-transparent leading-tight  
+              focus:outline-none  focus:border-accent-opposite"
               name="contact-message"
               id="contact-message"
               cols={30}
@@ -52,7 +52,9 @@ const Contact = () => {
               maxLength={1000}
             ></textarea>
           </div>
-          <Button className="my-24">Message Me!</Button>
+          <Button size={"bold"} variant={"secondary"} className="mt-24">
+            Message Me!
+          </Button>
         </form>
       </div>
     </section>
