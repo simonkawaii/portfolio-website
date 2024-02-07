@@ -1,24 +1,16 @@
 import { AnimatePresence, motion } from "framer-motion";
 import AnimatedPhrase from "./AnimatedPhrase";
-import { slideIn } from "../../Animations/Animations";
+import { slideIn, techBubblesAnim } from "../../Animations/Animations";
 import ScrollBox from "./ScrollBox";
+import Section from "../Wrappers/Section";
 
-const EmitBubble = ({ icon }: { icon: string }) => {
-  const randomDelay = Math.random() * 3000;
-
+const EmitBubble = ({ icon, index }: { icon: string; index: number }) => {
   return (
     <motion.div
-      animate={{
-        y: [0, -200],
-        x: ["-10px", "10px", "-10px", "10px"],
-        opacity: [0, 100, 0],
-      }}
-      transition={{
-        repeat: Infinity,
-        delay: randomDelay / 1000, // Convert milliseconds to seconds
-        duration: 3,
-        ease: "easeInOut",
-      }}
+      initial="initial"
+      animate="visible"
+      custom={index}
+      variants={techBubblesAnim}
     >
       <img
         loading="lazy"
@@ -56,15 +48,12 @@ const Hero = () => {
   ];
 
   const renderBubbles = bubbles.map(({ icon }, index) => {
-    return <EmitBubble key={`${icon}-${index}`} icon={icon} />;
+    return <EmitBubble index={index} key={`${icon}-${index}`} icon={icon} />;
   });
 
   return (
-    <div
-      className="items-center w-full flex gap-24 mt-12 flex-col h-full "
-      id="hero"
-    >
-      <div className=" items-center gap-[5rem] w-full h-full  md:gap-0  flex flex-col  md:flex-row">
+    <Section paddings={"none"} className="gap-12" id="hero">
+      <div className=" items-center gap-[10rem] w-full  h-full mt-12  md:gap-0  flex flex-col  md:flex-row">
         <div className=" items-center  md:h-auto h-full flex w-full ">
           <h1 className="font-bold">
             <AnimatedPhrase
@@ -72,7 +61,7 @@ const Hero = () => {
               phrase="Hi! I'm Szymon Kaliczak "
             />
             <AnimatedPhrase
-              className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white"
+              className="text-transparent motion-h2 bg-clip-text bg-gradient-to-r from-white via-white to-white"
               phrase="Passionate Frontend Developer and UI designer"
             ></AnimatedPhrase>
           </h1>
@@ -82,9 +71,9 @@ const Hero = () => {
           variants={slideIn}
           initial="initial"
           animate="visible"
-          className="relative  flex justify-center items-center h-full w-full"
+          className="relative flex justify-center items-center h-full w-full"
         >
-          <div className=" flex relative justify-center items-center">
+          <div className=" flex  relative justify-center items-center">
             <div className="absolute flex items-center inset-0 w-full m-auto">
               <AnimatePresence>
                 <div className=" justify-between w-full flex">
@@ -118,7 +107,7 @@ const Hero = () => {
                 alt="hero-img"
                 loading="lazy"
                 height={520}
-                width={560}
+                width={540}
                 rel="preload"
                 decoding="async"
               />
@@ -127,7 +116,7 @@ const Hero = () => {
         </motion.div>
       </div>
       <ScrollBox />
-    </div>
+    </Section>
   );
 };
 

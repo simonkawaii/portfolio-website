@@ -8,11 +8,11 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: 10px;
   font-weight: 400;
-  color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   scroll-behavior: smooth;
 
   background: #111111;
+  color-scheme: dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -42,8 +42,6 @@
 }
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
     font-size: 8px;
   }
 }
@@ -84,16 +82,25 @@ h2 {
   );
 }
 
-.gradient-mask-sides {
+.gradient-mask-hero {
   mask-image: linear-gradient(
     to right,
-    transparent 0%,
-    black 10%,
-    black 90%,
-    transparent 100%
+    transparent -20%,
+    black 30%,
+    black 60%,
+    transparent 120%
   );
 }
+::-moz-selection {
+  /* Code for Firefox */
+  color: white;
+  background: #3011ee;
+}
 
+::selection {
+  color: white;
+  background: #3011ee;
+}
 body.modalOpened {
   padding-right: 5px;
   overflow: hidden;
@@ -102,5 +109,14 @@ body.modalOpened {
   body.modalOpened {
     padding-right: 0;
     overflow: hidden;
+  }
+  .gradient-mask-sides {
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
   }
 }

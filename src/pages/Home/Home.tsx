@@ -1,10 +1,12 @@
-import Hero from "../../components/Hero/Hero";
+import React from "react";
 import DefaultLayout from "../../layouts/DefaultLayout";
 
-import About from "./About";
-import CodeSection from "./CodeSection";
-import Contact from "./Contact";
-import Skills from "./Skills";
+import Hero from "../../components/Hero/Hero";
+
+const About = React.lazy(() => import("./About"));
+const CodeSection = React.lazy(() => import("./CodeSection"));
+const Offer = React.lazy(() => import("./Offer"));
+const Skills = React.lazy(() => import("./Skills"));
 
 const Home = () => {
   return (
@@ -13,8 +15,8 @@ const Home = () => {
         <Hero />
         <About />
         <Skills />
+        <Offer />
         <CodeSection />
-        <Contact />
       </DefaultLayout>
     </>
   );

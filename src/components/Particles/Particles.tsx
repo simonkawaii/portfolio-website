@@ -1,9 +1,7 @@
-import { useState, useRef, Suspense } from "react";
+import { useState, useRef, Suspense, ElementRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Preload } from "@react-three/drei";
-// eslint-disable-next-line
-// @ts-ignore
-import * as random from "maath/random/dist/maath-random.esm";
+import * as random from "maath/random";
 import { useStarmode } from "../../Context/StarModeContext";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -11,15 +9,15 @@ function BackgroundStars(props: any) {
   const colorData = "#e62441";
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const ref: any = useRef();
+  const ref: any = useRef<ElementRef<any>>();
 
   const [sphere] = useState(() =>
     random.inSphere(new Float32Array(5000), { radius: 1.2 })
   );
 
   useFrame((_, delta) => {
-    ref.current.rotation.x -= delta / 10;
-    ref.current.rotation.y -= delta / 15;
+    ref.current.rotation.x -= delta / 20;
+    ref.current.rotation.y -= delta / 25;
   });
 
   return (

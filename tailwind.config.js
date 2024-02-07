@@ -7,8 +7,13 @@ export default {
         code: "JetBrains Mono",
       },
       colors: {
-        accent: "#e62441",
-        secondary: "#111111",
+        accent: {
+          DEFAULT: "#e62441",
+          opposite: "#11EE9F",
+        },
+        primary: "#3011EE",
+        secondary: "#CFEE11",
+        black: "#111111",
         code: {
           pink: "#d767c2",
           blue: "#3badf1",

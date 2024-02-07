@@ -1,4 +1,5 @@
 import AnimatedPhrase from "../../components/Hero/AnimatedPhrase";
+import Section from "../../components/Wrappers/Section";
 
 const techStack = [
   {
@@ -160,19 +161,19 @@ const Skills = () => {
   });
 
   return (
-    <div className="snap-center" id="skills">
-      <div className="py-[5rem] md:py-[10rem] flex text-center flex-col justify-center items-center">
+    <Section className="snap-center" id="skills">
+      <Section className="py-[5rem] md:py-[10rem] flex text-center flex-col justify-center items-center">
         <AnimatedPhrase
           className="text-center"
           phrase={"My skills and technology stack"}
         />
-      </div>
-      <div className=" flex flex-col relative justify-center  bg-clip-text bg-gradient-to-r from-accent w-full m-auto gradient-mask-sides overflow-x-auto  via-purple-600 to-accent items-center text-transparent">
-        <div className="flex flex-wrap w-full min-w-[50rem] p-12 gap-8 items-center justify-center m-auto">
+      </Section>
+      <div className=" flex flex-col relative justify-center max-w-[100rem] w-full  items-center  m-auto gradient-mask-sides  overflow-x-auto  text-transparent">
+        <div className="flex flex-wrap w-full min-w-[50rem] p-12  gap-8 items-center justify-center m-auto">
           {techStackMap}
         </div>
       </div>
-    </div>
+    </Section>
   );
 };
 

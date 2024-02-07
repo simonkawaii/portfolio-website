@@ -17,7 +17,7 @@ const ScrollBox = () => {
         scrub: true,
       },
     });
-    timeline.to(ref.current, { y: "-200px" }, 0);
+    timeline.to(ref.current, { y: "-100px" }, 0);
   }, []);
   return (
     <motion.div

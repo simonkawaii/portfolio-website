@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { Link } from "react-router-dom";
 import MobileMenu from "./MobileMenu";
 import { useState } from "react";
 import Modal from "../Utils/Modal/Modal";
@@ -20,13 +18,15 @@ const Navbar = () => {
           <MenuLinks />
         </div>
         <div className="z-20">
-          <ParticlesSwitch>lol</ParticlesSwitch>
+          <ParticlesSwitch />
         </div>
       </nav>
-      <nav className="xl:hidden flex w-full max-w-screen-xl items-center justify-between gap-8  ">
+      <nav className="xl:hidden flex w-full  items-center justify-between gap-8  ">
         <div>Szymon Kaliczak</div>
 
         <button onClick={() => setOpenMenu(true)}>
+          <span className=" sr-only">Close mobile menu</span>
+
           <div className="flex flex-col gap-[3px]">
             <span className="block w-10 h-[2px] bg-neutral-500 rounded-full"></span>
             <span className="block w-10 h-[2px] bg-neutral-500 rounded-full"></span>
@@ -37,7 +37,7 @@ const Navbar = () => {
           <MobileMenu opened={openMenu} setOpen={setOpenMenu}>
             <MenuLinks></MenuLinks>
             <div className="z-20">
-              <ParticlesSwitch>lol</ParticlesSwitch>
+              <ParticlesSwitch />
             </div>
           </MobileMenu>
         </Modal>
