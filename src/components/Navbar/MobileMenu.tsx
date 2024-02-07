@@ -48,6 +48,7 @@ const MobileMenu: React.FC<IMenuButtonTypes> = ({
                 setOpen && setOpen(false);
               }}
             >
+              <span className=" sr-only">Close mobile menu</span>
               <span>close</span>
             </button>
           </div>

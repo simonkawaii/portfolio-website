@@ -5,7 +5,7 @@ import { VariantProps, cva } from "class-variance-authority";
 import { Link } from "react-router-dom";
 
 const buttonVariants = cva(
-  "px-12 py-4 text-2xl flex justify-center border-[1px] border-transparent duration-200 items-center relative focus:ring-4 focus:ring-accent/30 outline-none  ",
+  "px-12 py-4 text-[1.6rem] flex justify-center border-[1px] border-transparent duration-200 items-center relative focus:ring-4 focus:ring-accent/30 outline-none  ",
   {
     variants: {
       variant: {

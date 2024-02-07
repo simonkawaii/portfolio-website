@@ -6,7 +6,9 @@ const Contact = () => {
       <div className="flex flex-col w-full gap-24 max-w-screen-xl h-full">
         <div>
           <h2>Contact</h2>
-          <p className="text-secondary tracking-wide">Let's get linked in!</p>
+          <p className="text-secondary tracking-wider">
+            Let's work together and create something extraordinary!
+          </p>
         </div>
         <form
           action=""

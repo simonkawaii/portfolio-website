@@ -25,6 +25,8 @@ const Navbar = () => {
         <div>Szymon Kaliczak</div>
 
         <button onClick={() => setOpenMenu(true)}>
+          <span className=" sr-only">Close mobile menu</span>
+
           <div className="flex flex-col gap-[3px]">
             <span className="block w-10 h-[2px] bg-neutral-500 rounded-full"></span>
             <span className="block w-10 h-[2px] bg-neutral-500 rounded-full"></span>
