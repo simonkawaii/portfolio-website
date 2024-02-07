@@ -91,7 +91,16 @@ h2 {
     transparent 120%
   );
 }
+::-moz-selection {
+  /* Code for Firefox */
+  color: white;
+  background: #3011ee;
+}
 
+::selection {
+  color: white;
+  background: #3011ee;
+}
 body.modalOpened {
   padding-right: 5px;
   overflow: hidden;
