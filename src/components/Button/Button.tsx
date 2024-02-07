@@ -5,12 +5,13 @@ import { VariantProps, cva } from "class-variance-authority";
 import { Link } from "react-router-dom";
 
 const buttonVariants = cva(
-  "px-12 py-4 flex justify-center border-[1px] border-transparent duration-200 items-center relative rounded-md",
+  "px-12 py-4 text-2xl flex justify-center border-[1px] border-transparent duration-200 items-center relative rounded-md",
   {
     variants: {
       variant: {
-        primary: "bg-accent text-white",
-        destructive: "bg-red-400",
+        primary:
+          "bg-accent text-white hover:bg-transparent hover:border-accent",
+        destructive: "bg-red-500",
         outline: "border-[1px] border-neutral-700 hover:bg-neutral-600/50",
         subtle: "bg-blue-400/40",
         ghost: "bg-gray-500/50",
