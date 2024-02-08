@@ -5,7 +5,7 @@ import { slideIn } from "../../Animations/Animations";
 import { VariantProps, cva } from "class-variance-authority";
 
 const SectionVariants = cva(
-  "py-[5rem] md:py-[10rem] mx-auto w-full h-full flex flex-col justify-center items-center relative border-[1px] rounded-[2rem]",
+  "p-8 py-[5rem] md:py-[10rem] mx-auto w-full h-full flex flex-col justify-center items-center relative border-[1px] rounded-[2rem]",
   {
     variants: {
       variant: {
@@ -38,18 +38,19 @@ interface SectionProps
     VariantProps<typeof SectionVariants> {
   children?: React.ReactNode;
   once?: boolean;
+  id: string;
 }
 
 const Section = forwardRef<HTMLDivElement, SectionProps>(
   (
-    { children, className, variant, paddings, size, once = true, ...props },
+    { children, className, variant, paddings, id, size, once = true, ...props },
     reactRef
   ) => {
     const container = useRef(null);
     const isInView = useInView(container, { once: once });
 
     return (
-      <section ref={container}>
+      <section className="md:my-12" ref={container} id={id}>
         <motion.div
           variants={slideIn}
           ref={reactRef}

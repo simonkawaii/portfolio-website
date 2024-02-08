@@ -1,10 +1,14 @@
-import { AnimatePresence, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
+
 import Section from "../../components/Wrappers/Section";
 import AnimatedPhrase from "../../components/Hero/AnimatedPhrase";
 import Card from "../../components/Wrappers/Card";
+import React from "react";
+
+const GenerateCodeWrapper = React.lazy(
+  () => import("../../components/CodeGen/GenerateCode")
+);
 
 const codeString = `import Hero from "../../roles/Frontend-Developer.tsx";
 import Passion from "../../config/Heart.tsx";
@@ -36,39 +40,6 @@ const Component = () => {
   };
 
 };`;
-const codeStringSeparated = codeString.split("");
-
-const GenerateCode = ({ isInView }: { isInView: boolean }) => {
-  const [codeText, setCodeText] = useState("");
-
-  useEffect(() => {
-    if (isInView) {
-      let index = 0;
-      const intervalDuration = 10;
-      let text = "";
-      const interval = setInterval(() => {
-        text += codeStringSeparated[index];
-        setCodeText(text);
-
-        index++;
-
-        if (index === codeStringSeparated.length - 1) {
-          clearInterval(interval);
-        }
-      }, intervalDuration);
-
-      return () => clearInterval(interval);
-    }
-  }, [isInView]);
-
-  return (
-    <div className="contrast-150  absolute inset-8">
-      <SyntaxHighlighter language="javascript" style={atomOneDark}>
-        {codeText}
-      </SyntaxHighlighter>
-    </div>
-  );
-};
 
 const CodeSection = () => {
   const container = useRef(null);
@@ -85,30 +56,7 @@ const CodeSection = () => {
       </div>
       <Card>
         <span className="[&>*]:font-code [&>*]:leading-[1.5] font-code text-2xl [&>*]:text-2xl">
-          <div
-            style={{
-              display: isInView ? "block" : "none",
-              opacity: isInView ? 1 : 0,
-              transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
-            }}
-          >
-            {isInView ? (
-              <AnimatePresence>
-                <>
-                  <GenerateCode isInView={isInView} />
-
-                  <div className="opacity-0 pointer-events-none -z-10">
-                    <SyntaxHighlighter
-                      language="javascript"
-                      style={atomOneDark}
-                    >
-                      {codeString}
-                    </SyntaxHighlighter>
-                  </div>
-                </>
-              </AnimatePresence>
-            ) : null}
-          </div>
+          <GenerateCodeWrapper isInView={isInView} codeString={codeString} />
         </span>
       </Card>
     </Section>

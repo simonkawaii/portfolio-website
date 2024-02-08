@@ -23,7 +23,7 @@ const Backdrop: React.FC<BackdropProps> = ({ children, onClick }) =>
       }}
       tabIndex={0}
       onClick={onClick}
-      className="flex fixed top-0 right-0 w-full h-full bg-black/30 justify-end z-50 "
+      className="flex  fixed top-0 right-0 w-full h-full bg-black/30 justify-end z-50 "
     >
       {children}
     </motion.div>,

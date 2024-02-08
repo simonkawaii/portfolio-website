@@ -1,29 +1,13 @@
 import { AnimatePresence, motion } from "framer-motion";
 import AnimatedPhrase from "./AnimatedPhrase";
-import { slideIn, techBubblesAnim } from "../../Animations/Animations";
-import ScrollBox from "./ScrollBox";
+import { slideIn } from "../../Animations/Animations";
 import Section from "../Wrappers/Section";
+import React, { Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 
-const EmitBubble = ({ icon, index }: { icon: string; index: number }) => {
-  return (
-    <motion.div
-      initial="initial"
-      animate="visible"
-      custom={index}
-      variants={techBubblesAnim}
-    >
-      <img
-        loading="lazy"
-        draggable="false"
-        height={30}
-        width={30}
-        className="select-none h-[3rem] w-[3rem]"
-        src={icon ?? ""}
-        alt={`${icon}`}
-      />
-    </motion.div>
-  );
-};
+const EmitBubble = React.lazy(() => import("./EmitBubble"));
+const ScrollBox = React.lazy(() => import("./ScrollBox"));
+
 const Hero = () => {
   const bubbles = [
     {
@@ -52,7 +36,7 @@ const Hero = () => {
   });
 
   return (
-    <Section paddings={"none"} className="gap-12" id="hero">
+    <Section paddings={"none"} id="home" className="gap-12">
       <div className=" items-center gap-[10rem] w-full  h-full mt-12  md:gap-0  flex flex-col  md:flex-row">
         <div className=" items-center  md:h-auto h-full flex w-full ">
           <h1 className="font-bold">
@@ -78,7 +62,9 @@ const Hero = () => {
               <AnimatePresence>
                 <div className=" justify-between w-full flex">
                   <motion.div className="flex w-full justify-between">
-                    {renderBubbles}
+                    <ErrorBoundary fallback={<></>}>
+                      <Suspense fallback={<></>}>{renderBubbles}</Suspense>
+                    </ErrorBoundary>
                   </motion.div>
                 </div>
               </AnimatePresence>
@@ -105,17 +91,22 @@ const Hero = () => {
                 className="select-none contrast-125 object-cover relative  md:object-contain 
               inset-0 gradient-mask "
                 alt="hero-img"
-                loading="lazy"
                 height={520}
                 width={540}
                 rel="preload"
-                decoding="async"
+                decoding="sync"
+                loading="eager"
               />
             </picture>
           </div>
         </motion.div>
       </div>
-      <ScrollBox />
+
+      <ErrorBoundary fallback={<></>}>
+        <Suspense fallback={<></>}>
+          <ScrollBox />
+        </Suspense>
+      </ErrorBoundary>
     </Section>
   );
 };

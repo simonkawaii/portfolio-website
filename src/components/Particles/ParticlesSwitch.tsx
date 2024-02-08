@@ -28,7 +28,19 @@ const EmitStars = ({ icon, index }: { icon: string; index: number }) => {
 const ParticlesSwitch = () => {
   const starsArray = Array.from({ length: 6 }, (_, i) => i + 1);
 
+  const starsArrayCopy = JSON.parse(JSON.stringify(starsArray));
+
+  const starsBackArray = starsArrayCopy.reverse();
   const renderStars = starsArray.map((id, index) => {
+    return (
+      <EmitStars
+        index={id}
+        key={`"/star.svg"-${id}-${index}`}
+        icon={"/star.svg"}
+      />
+    );
+  });
+  const renderStarsBack = starsBackArray.map((id: number, index: number) => {
     return (
       <EmitStars
         index={id}
@@ -52,9 +64,17 @@ const ParticlesSwitch = () => {
       variant={"outline"}
     >
       {starmode === "true" ? (
-        <div className="absolute h-full z-[-1] w-full flex justify-center overflow-hidden inset-0 ">
-          {renderStars}
-        </div>
+        <>
+          <div className="absolute h-full z-[-1] w-full flex justify-center overflow-hidden inset-0 ">
+            {renderStars}
+          </div>
+
+          <div className="bg-gradient-to-r absolute  h-full w-full  flex justify-center  from-accent/30 from-10%  to-purple-600/30">
+            <div className="absolute blur-[2px] brightness-125  h-full z-[-1] w-full flex justify-center overflow-hidden inset-0 ">
+              {renderStarsBack}
+            </div>
+          </div>
+        </>
       ) : null}
       <img
         src="./stars.svg"

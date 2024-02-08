@@ -11,7 +11,7 @@ const ScrollBox = () => {
 
     const timeline = gsap.timeline({
       scrollTrigger: {
-        trigger: "#hero",
+        trigger: "#home",
         start: "0%",
         end: "100%",
         scrub: true,
@@ -23,7 +23,7 @@ const ScrollBox = () => {
     <motion.div
       id="scroll-box"
       ref={ref}
-      className={`w-full p-24  duration-100 flex justify-center items-center `}
+      className={`w-full p-24 duration-100 flex justify-center items-center `}
     >
       <motion.div
         animate={{
