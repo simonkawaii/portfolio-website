@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
 import AnimatedPhrase from "./AnimatedPhrase";
-import { slideIn } from "../../Animations/Animations";
 import Section from "../Wrappers/Section";
 import React, { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
@@ -36,10 +35,15 @@ const Hero = () => {
   });
 
   return (
-    <Section paddings={"none"} id="home" className="gap-12">
+    <Section
+      animateSection={false}
+      paddings={"none"}
+      id="home"
+      className="gap-12"
+    >
       <div className=" items-center gap-[10rem] w-full  h-full mt-12  md:gap-0  flex flex-col  md:flex-row">
         <div className=" items-center  md:h-auto h-full flex w-full ">
-          <h1 className="font-bold">
+          <h1>
             <AnimatedPhrase
               className="text-transparent  bg-clip-text bg-gradient-to-r from-accent via-red-600 to-accent"
               phrase="Hi! I'm Szymon Kaliczak "
@@ -52,9 +56,12 @@ const Hero = () => {
         </div>
 
         <motion.div
-          variants={slideIn}
-          initial="initial"
-          animate="visible"
+          animate={{
+            opacity: [0, 1],
+            transition: {
+              duration: 0.1,
+            },
+          }}
           className="relative flex justify-center items-center h-full w-full"
         >
           <div className=" flex  relative justify-center items-center">
@@ -94,7 +101,7 @@ const Hero = () => {
                 height={520}
                 width={540}
                 rel="preload"
-                decoding="sync"
+                decoding="async"
                 loading="eager"
               />
             </picture>

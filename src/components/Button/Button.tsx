@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes } from "react";
+import React, { ButtonHTMLAttributes, forwardRef } from "react";
 import cn from "../../utils/cn";
 
 import { VariantProps, cva } from "class-variance-authority";
@@ -13,6 +13,8 @@ const buttonVariants = cva(
           "bg-accent text-white hover:bg-transparent hover:border-accent focus:border-accent focus:bg-transparent",
         secondary:
           "bg-secondary hover:bg-transparent hover:border-secondary focus:border-secondary focus:bg-transparent focus:ring-secondary/30 focus:text-white hover:text-white text-black ",
+        contact:
+          "bg-secondary hover:border-secondary focus:border-secondary  focus:ring-secondary/30  text-black ",
         destructive: "bg-red-500",
         outline: "border-[1px] border-neutral-700 hover:bg-neutral-600/50",
         subtle: "bg-blue-400/40",
@@ -38,35 +40,40 @@ interface IButtonProps
   pathname?: string;
 }
 
-const Button: React.FC<IButtonProps> = ({
-  className,
-  size,
-  variant,
-  children,
-  isLink = false,
-  pathname = "/",
-  ...props
-}) => {
-  return !isLink ? (
-    <button
-      {...props}
-      type="button"
-      className={cn(buttonVariants({ variant, size, className }))}
-    >
-      {children}
-    </button>
-  ) : (
-    <Link to={pathname}>
+const Button = forwardRef<HTMLButtonElement, IButtonProps>(
+  (
+    {
+      className,
+      size,
+      variant,
+      children,
+      isLink = false,
+      pathname = "/",
+      ...props
+    },
+    ref
+  ) => {
+    return !isLink ? (
       <button
+        ref={ref}
         {...props}
         type="button"
         className={cn(buttonVariants({ variant, size, className }))}
       >
         {children}
       </button>
-    </Link>
-  );
-};
-Button.displayName = "button";
+    ) : (
+      <Link to={pathname}>
+        <button
+          {...props}
+          type="button"
+          className={cn(buttonVariants({ variant, size, className }))}
+        >
+          {children}
+        </button>
+      </Link>
+    );
+  }
+);
 
 export { Button, buttonVariants };

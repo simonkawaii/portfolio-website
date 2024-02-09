@@ -7,6 +7,7 @@ import Contact from "./Contact";
 const Hero = React.lazy(() => import("../../components/Hero/Hero"));
 const About = React.lazy(() => import("./About"));
 const CodeSection = React.lazy(() => import("./CodeSection"));
+const Portfolio = React.lazy(() => import("./Portfolio"));
 const Offer = React.lazy(() => import("./Offer"));
 const Skills = React.lazy(() => import("./Skills"));
 
@@ -16,16 +17,11 @@ const Home = () => {
       <DefaultLayout>
         <Hero />
         <About />
-
         <ErrorBoundary fallback={<>Error</>}>
           <Suspense fallback={<></>}>
             <Skills />
             <Offer />
-          </Suspense>
-        </ErrorBoundary>
-
-        <ErrorBoundary fallback={<>Error</>}>
-          <Suspense fallback={<></>}>
+            <Portfolio />
             <CodeSection />
             <Contact />
           </Suspense>

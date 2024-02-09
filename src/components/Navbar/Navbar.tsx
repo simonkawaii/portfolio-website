@@ -37,10 +37,19 @@ const Navbar = () => {
         <button onClick={() => setOpenMenu(true)}>
           <span className=" sr-only">Close mobile menu</span>
 
-          <div className="flex flex-col gap-[3px]">
-            <span className="block w-10 h-[2px] bg-neutral-500 rounded-full"></span>
-            <span className="block w-10 h-[2px] bg-neutral-500 rounded-full"></span>
-            <span className="block w-10 h-[2px] bg-neutral-500 rounded-full"></span>
+          <div className="flex flex-col gap-[3px] ">
+            <svg
+              width="32"
+              height="19"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g className="[&>*]:fill-neutral-500">
+                <rect width="32" height="3" rx="1.5" />
+                <rect y="8" width="32" height="3" rx="1.5" />
+                <rect y="16" width="16" height="3" rx="1.5" />
+              </g>
+            </svg>
           </div>
         </button>
         <Modal isOpen={openMenu} handleClose={() => setOpenMenu(false)}>

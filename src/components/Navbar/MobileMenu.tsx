@@ -24,24 +24,8 @@ const MobileMenu: React.FC<IMenuButtonTypes> = ({
             e.stopPropagation();
           }}
         >
-          <div
-            style={{
-              justifyContent: "space-between",
-              display: "flex",
-              alignItems: "center",
-              height: "60px",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "3rem",
-                fontWeight: "600",
-                letterSpacing: "2px",
-                color: "var(--primary-color",
-              }}
-            >
-              MENU
-            </div>
+          <div className="flex justify-between items-center h-24">
+            <div className="text-[3rem] font-bold tracking-wide">MENU</div>
             <button
               type="button"
               onClick={() => {
@@ -54,16 +38,7 @@ const MobileMenu: React.FC<IMenuButtonTypes> = ({
           </div>
 
           <div>
-            <div
-              className="bg-inherit"
-              style={{
-                width: "100%",
-                height: "fit-content",
-                gap: "2rem",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
+            <div className="bg-inherit w-full h-fit gap-8 flex flex-col">
               {children}
             </div>
           </div>

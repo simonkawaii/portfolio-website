@@ -1,7 +1,7 @@
 import Section from "../../components/Wrappers/Section";
 
 const Offer = () => {
-  return <Section id="offer">What do I offer... Nothing I guess</Section>;
+  return <Section id="offer"></Section>;
 };
 
 export default Offer;

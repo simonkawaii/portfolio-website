@@ -5,33 +5,28 @@ import DefaultLayout from "../layouts/DefaultLayout";
 import { Suspense, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Home from "../pages/Home/Home";
-import App from "../App";
-import PageLoader from "../components/Loaders/PageLoader";
+import { ErrorBoundary } from "react-error-boundary";
+import React from "react";
+
+const App = React.lazy(() => import("../App"));
 
 export function ScrollToAnchor() {
   const location = useLocation();
 
   useEffect(() => {
-    // Scroll to top when the route changes
-
-    // Or scroll to a specific element if there is a hash in the URL
     if (location.hash) {
       setTimeout(() => {
         const targetElement = document.querySelector(location.hash);
         const navbarElement = document.querySelector("#navbar");
+
         const navbarHeight = navbarElement?.getBoundingClientRect().height;
 
-        const yOffset = -navbarHeight;
-        const { top } = targetElement?.getBoundingClientRect();
-        const yPos = top + window.scrollY + yOffset;
+        const yOffset = navbarHeight ?? 0;
+        const top = targetElement?.getBoundingClientRect().top ?? 0;
+        const yPos = top + window.scrollY + -yOffset;
 
         if (targetElement) {
           window.scrollTo({ top: yPos, behavior: "smooth" });
-
-          // targetElement.scrollIntoView({
-          //   behavior: "smooth",
-          //   inline: "center",
-          // });
         }
       }, 100);
     } else {
@@ -45,22 +40,37 @@ export function ScrollToAnchor() {
 export const RouterConfig = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <ErrorBoundary fallback={<></>}>
+        <Suspense fallback={<></>}>
+          <App />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+
     children: [
       {
         path: "/",
         element: (
-          <Suspense fallback={<PageLoader />}>
-            <ScrollToAnchor />
-            <Home />
-          </Suspense>
+          <ErrorBoundary fallback={<></>}>
+            <Suspense fallback={<></>}>
+              <ScrollToAnchor />
+              <Home />
+            </Suspense>
+          </ErrorBoundary>
         ),
       },
     ],
   },
   {
     path: "*",
-    element: <DefaultLayout>Not found</DefaultLayout>,
+    element: <App />,
+    children: [
+      {
+        path: "*",
+        element: <DefaultLayout>Not found</DefaultLayout>,
+      },
+    ],
   },
 ]);
 
