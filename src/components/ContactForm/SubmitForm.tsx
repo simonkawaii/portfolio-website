@@ -4,17 +4,36 @@ import CheckedIcon from "../../assets/CheckedIcon";
 import { Button } from "../Button/Button";
 
 const SubmitForm = () => {
+  const stateMap: { [key: string]: string } = {
+    success: "success",
+    loading: "loading",
+    error: "error",
+  };
   const [scope, animate] = useAnimate();
-  const [trigger, setTriggeredState] = useState(false);
+  const [trigger, setTriggeredState] = useState("");
 
   const handleAnimation = () => {
-    setTriggeredState(true);
+    const rand = Math.random();
+    new Promise((resolve, reject) => {
+      setTriggeredState("loading");
+
+      setTimeout(() => {
+        if (rand > 0.5) {
+          setTriggeredState("error");
+
+          resolve("success");
+        } else {
+          setTriggeredState("success");
+          reject();
+        }
+      }, 4000);
+    });
   };
 
   useEffect(() => {
     const CleanUpTimeout = setTimeout(() => {
-      setTriggeredState(false);
-    }, 1500);
+      setTriggeredState("");
+    }, 5000);
     return () => clearTimeout(CleanUpTimeout);
   }, [trigger]);
   return (
@@ -23,17 +42,30 @@ const SubmitForm = () => {
       onClick={handleAnimation}
       size={"bold"}
       variant={"contact"}
-      className="mt-24 overflow-hidden"
+      disabled={!!stateMap[trigger]}
+      className={`${
+        trigger === "error"
+          ? "animate-sidetoside bg-red-400 hover:border-red-400 focus:border-red-400 focus:ring-red-400"
+          : ""
+      } mt-24 overflow-hidden`}
     >
       <motion.span
-        className={`${
-          trigger ? "opacity-0 " : "opacity-0 "
-        } text-[1.6rem] font-bold`}
+        initial={{
+          y: "0%",
+        }}
+        animate={{
+          opacity: stateMap[trigger] ? 0 : 1,
+          y: stateMap[trigger] ? "200%" : "0%",
+          transition: {
+            duration: 0.2,
+          },
+        }}
+        className={`text-[1.6rem] duration-200 font-bold`}
       >
         Message Me!
       </motion.span>
       <AnimatePresence mode="wait">
-        {trigger ? <CheckedIcon /> : null}
+        {stateMap[trigger] ? <CheckedIcon trigger={trigger} /> : null}
       </AnimatePresence>
     </Button>
   );
