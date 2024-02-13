@@ -58,18 +58,18 @@ const GenerateCodeWrapper = ({
       }}
     >
       {isInView ? (
-        <AnimatePresence>
-          <>
+        <>
+          <AnimatePresence>
             <GenerateCode codeString={codeString} isInView={isInView} />
-
-            <div className="opacity-0 pointer-events-none -z-10">
-              <SyntaxHighlighter language="javascript" style={atomOneDark}>
-                {codeString}
-              </SyntaxHighlighter>
-            </div>
-          </>
-        </AnimatePresence>
+          </AnimatePresence>
+        </>
       ) : null}
+
+      <div className="opacity-0 pointer-events-none -z-10">
+        <SyntaxHighlighter language="javascript" style={atomOneDark}>
+          {codeString}
+        </SyntaxHighlighter>
+      </div>
     </div>
   );
 };

@@ -1,56 +1,50 @@
 import { motion } from "framer-motion";
 
 const CircleVariants = {
-  initial: (i: number) => ({
-    pathLength: 0,
-  }),
+  initial: {
+    pathLength: 0.5,
+  },
   visible: {
     pathLength: 1,
     rotate: 0,
-
     transition: {
       duration: 0.7,
       delay: 0.2,
       ease: "easeInOut",
     },
   },
-  hidden: (i: number) => ({
+  hidden: {
     pathLength: 1,
-  }),
-  loading: (i: number) => ({
-    rotate: 520,
-    pathLength: [0.22, 1, 0.1, 1, 0.15, 1],
+  },
+  loading: {
+    rotate: 360,
     transition: {
-      times: [0, 0.2, 0.4, 0.6, 0.8, 1],
-      ease: "easeInOut",
-      repeatType: "mirror",
+      ease: "linear",
       repeat: Infinity,
-      duration: 3,
+      duration: 0.5,
     },
-  }),
-  exit: (i: number) => ({
+  },
+  exit: {
     pathLength: 0,
-    transition: {},
-  }),
+  },
 };
 const CheckedVariants = {
-  initial: (i: number) => ({
-    strokeDashoffset: i,
-  }),
+  initial: {
+    pathLength: 0,
+  },
   visible: {
-    strokeDashoffset: 0,
+    pathLength: 1,
     transition: {
       duration: 0.7,
       ease: "easeInOut",
     },
   },
-  hidden: (i: number) => ({
-    strokeDashoffset: i,
-  }),
-  exit: (i: number) => ({
-    strokeDashoffset: i,
-    transition: {},
-  }),
+  hidden: {
+    pathLength: 0,
+  },
+  exit: {
+    pathLength: 0,
+  },
 };
 
 const CheckedIcon = ({ trigger }: { trigger: string }) => {
@@ -67,14 +61,13 @@ const CheckedIcon = ({ trigger }: { trigger: string }) => {
           variants={CircleVariants}
           animate={trigger === "loading" ? "loading" : "visible"}
           exit="exit"
-          custom={350}
           id="Circle"
           strokeLinecap={"round"}
           cx="28"
           cy="28"
           r="25"
           stroke="#000"
-          strokeWidth="3"
+          strokeWidth={3}
         />
         <motion.path
           initial="initial"
@@ -85,8 +78,7 @@ const CheckedIcon = ({ trigger }: { trigger: string }) => {
           id="Checked"
           d="M15 34.9999L21.8 41.7998L41.7998 21.8"
           stroke="#000"
-          strokeWidth="3"
-          strokeDasharray="100" // Length of the path
+          strokeWidth={3}
         />
         <motion.path
           initial="initial"
@@ -97,8 +89,7 @@ const CheckedIcon = ({ trigger }: { trigger: string }) => {
           d="M41 15L14.7987 41.2013"
           custom={100}
           stroke="black"
-          strokeDasharray="100" // Length of the path
-          stroke-width="3"
+          strokeWidth={3}
         />
         <motion.path
           initial="initial"
@@ -109,8 +100,7 @@ const CheckedIcon = ({ trigger }: { trigger: string }) => {
           id="Vector 3"
           d="M41 41L14.7987 14.7987"
           stroke="black"
-          strokeDasharray="100" // Length of the path
-          stroke-width="3"
+          strokeWidth={3}
         />
       </svg>
     </div>

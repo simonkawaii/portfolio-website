@@ -2,13 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import { useRouteError } from "react-router-dom";
 import DefaultLayout from "../layouts/DefaultLayout";
 
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Home from "../pages/Home/Home";
-import { ErrorBoundary } from "react-error-boundary";
-import React from "react";
-
-const App = React.lazy(() => import("../App"));
+import App from "../App";
 
 export function ScrollToAnchor() {
   const location = useLocation();
@@ -40,24 +37,16 @@ export function ScrollToAnchor() {
 export const RouterConfig = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <ErrorBoundary fallback={<></>}>
-        <Suspense fallback={<></>}>
-          <App />
-        </Suspense>
-      </ErrorBoundary>
-    ),
+    element: <App />,
 
     children: [
       {
         path: "/",
         element: (
-          <ErrorBoundary fallback={<></>}>
-            <Suspense fallback={<></>}>
-              <ScrollToAnchor />
-              <Home />
-            </Suspense>
-          </ErrorBoundary>
+          <>
+            <ScrollToAnchor />
+            <Home />
+          </>
         ),
       },
     ],

@@ -1,7 +1,7 @@
-import { AnimatePresence, motion, useAnimate } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import CheckedIcon from "../../assets/CheckedIcon";
 import { Button } from "../Button/Button";
+import { useEffect, useState } from "react";
 
 const SubmitForm = () => {
   const stateMap: { [key: string]: string } = {
@@ -9,7 +9,6 @@ const SubmitForm = () => {
     loading: "loading",
     error: "error",
   };
-  const [scope, animate] = useAnimate();
   const [trigger, setTriggeredState] = useState("");
 
   const handleAnimation = () => {
@@ -38,7 +37,6 @@ const SubmitForm = () => {
   }, [trigger]);
   return (
     <Button
-      ref={scope}
       onClick={handleAnimation}
       size={"bold"}
       variant={"contact"}

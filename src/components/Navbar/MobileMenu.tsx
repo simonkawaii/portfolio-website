@@ -33,7 +33,25 @@ const MobileMenu: React.FC<IMenuButtonTypes> = ({
               }}
             >
               <span className=" sr-only">Close mobile menu</span>
-              <span>close</span>
+              <svg
+                width="56"
+                height="56"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  id="Vector 2"
+                  d="M41 15L14.7987 41.2013"
+                  stroke="white"
+                  strokeWidth={3}
+                />
+                <path
+                  id="Vector 3"
+                  d="M41 41L14.7987 14.7987"
+                  stroke="white"
+                  strokeWidth={3}
+                />
+              </svg>
             </button>
           </div>
 

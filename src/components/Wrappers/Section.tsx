@@ -61,7 +61,7 @@ const Section = forwardRef<HTMLDivElement, SectionProps>(
     const isInView = useInView(container, { once: once });
 
     return (
-      <section className="md:my-12" ref={container} id={id}>
+      <motion.section className="md:my-12 duration-200" ref={container} id={id}>
         {animateSection ? (
           <motion.div
             variants={slideIn}
@@ -96,7 +96,7 @@ const Section = forwardRef<HTMLDivElement, SectionProps>(
             ) : null}
           </motion.div>
         )}
-      </section>
+      </motion.section>
     );
   }
 );

@@ -51,7 +51,7 @@ const Hero = () => {
             <AnimatedPhrase
               className="text-transparent motion-h2 bg-clip-text bg-gradient-to-r from-white via-white to-white"
               phrase="Passionate Frontend Developer and UI designer"
-            ></AnimatedPhrase>
+            />
           </h1>
         </div>
 
@@ -62,7 +62,7 @@ const Hero = () => {
               duration: 0.1,
             },
           }}
-          className="relative flex justify-center items-center h-full w-full"
+          className="relative flex justify-center items-center h-full  w-full"
         >
           <div className=" flex  relative justify-center items-center">
             <div className="absolute flex items-center inset-0 w-full m-auto">

@@ -1,8 +1,8 @@
 import React, { Suspense } from "react";
 import DefaultLayout from "../../layouts/DefaultLayout";
 
-import { ErrorBoundary } from "react-error-boundary";
 import Contact from "./Contact";
+import { ErrorBoundary } from "react-error-boundary";
 
 const Hero = React.lazy(() => import("../../components/Hero/Hero"));
 const About = React.lazy(() => import("./About"));
@@ -17,7 +17,7 @@ const Home = () => {
       <DefaultLayout>
         <Hero />
         <About />
-        <ErrorBoundary fallback={<>Error</>}>
+        <ErrorBoundary fallback={<></>}>
           <Suspense fallback={<></>}>
             <Skills />
             <Offer />

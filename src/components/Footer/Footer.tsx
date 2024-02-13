@@ -1,11 +1,12 @@
+import { motion } from "framer-motion";
 import Section from "../Wrappers/Section";
 
 const Footer = () => {
   return (
-    <footer className="overflow-hidden  bg-neutral-900">
+    <footer className="overflow-hidden p-[2rem]  bg-neutral-900">
       <Section>
         <div className="flex flex-col  w-full">
-          <div className="flex w-full justify-between flex-wrap gap-24">
+          <div className="flex w-full justify-between flex-wrap gap-12">
             <div className="flex flex-col gap-4 ">
               <h3 className="motion-h2">Social links</h3>
               <ul className="flex flex-row gap-4">
@@ -38,7 +39,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div className="flex flex-col gap-4 ">
+            <motion.div className="flex flex-col gap-4 ">
               <h3 className="motion-h2">Contact</h3>
               <ul className="flex flex-row gap-4">
                 <li className="flex gap-4 rounded-full items-center ">
@@ -47,7 +48,7 @@ const Footer = () => {
                   </a>
                 </li>
               </ul>
-            </div>
+            </motion.div>
           </div>
         </div>
       </Section>
