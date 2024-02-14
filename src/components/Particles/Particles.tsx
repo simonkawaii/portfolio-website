@@ -40,7 +40,7 @@ const StarsCanvas = () => {
   const { starmode } = useStarmode();
 
   return (
-    <div className={`w-full  h-auto fixed inset-0 z-[-2]`}>
+    <div className={`w-full  h-[100dvh] fixed inset-0 z-[-2]`}>
       {starmode === "true" ? (
         <Canvas camera={{ position: [0, 0, 1] }}>
           <Suspense fallback={null}>

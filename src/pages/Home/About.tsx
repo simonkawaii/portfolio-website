@@ -8,7 +8,7 @@ const About = () => {
   return (
     <Section id="about">
       <div className="py-[5rem] md:py-[10rem] flex flex-col justify-center items-center">
-        <AnimatedPhrase className="text-center" phrase={"Get to know me!"} />
+        <AnimatedPhrase className="text-center" phrase={"About me!"} />
       </div>
       <div className=" flex flex-col relative justify-center  bg-clip-text bg-gradient-to-r from-accent  via-purple-600 to-accent items-center text-transparent  ">
         <ScrollParagraph className="motion-h2 tracking-wide" phrase={phrase} />

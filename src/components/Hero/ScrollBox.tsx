@@ -1,24 +1,15 @@
-import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, } from "framer-motion";
 
 const ScrollBox = () => {
-  function useParallax(value: MotionValue<number>, distance: number) {
-    return useTransform(value, [0, 1], [-distance, 0]);
-  }
 
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref });
 
-  const y = useParallax(scrollYProgress, 100);
   return (
     <motion.div
       id="scroll-box"
-      ref={ref}
-      style={{ y }}
       className={`w-full p-24 duration-100 flex justify-center items-center `}
     >
       <motion.div
-        animate={{}}
+ 
         transition={{
           repeat: Infinity,
           duration: 2,

@@ -43,7 +43,7 @@ const Hero = () => {
     >
       <div className=" items-center gap-[10rem] w-full  h-full mt-12  md:gap-0  flex flex-col  md:flex-row">
         <div className=" items-center  md:h-auto h-full flex w-full ">
-          <h1>
+          <h1 >
             <AnimatedPhrase
               className="text-transparent  bg-clip-text bg-gradient-to-r from-accent via-red-600 to-accent"
               phrase="Hi! I'm Szymon Kaliczak "
@@ -56,10 +56,13 @@ const Hero = () => {
         </div>
 
         <motion.div
+        initial={{
+          opacity:0
+        }}
           animate={{
-            opacity: [0, 1],
+            opacity: 1,
             transition: {
-              duration: 0.1,
+              duration: 1,
             },
           }}
           className="relative flex justify-center items-center h-full  w-full"
@@ -68,7 +71,17 @@ const Hero = () => {
             <div className="absolute flex items-center inset-0 w-full m-auto">
               <AnimatePresence>
                 <div className=" justify-between w-full flex">
-                  <motion.div className="flex w-full justify-between">
+                  <motion.div
+                       initial={{
+                        opacity:0
+                      }}
+                        animate={{
+                          opacity: 1,
+                          transition: {
+                            duration: 3,
+                          },
+                        }}
+                  className="flex w-full justify-between">
                     <ErrorBoundary fallback={<></>}>
                       <Suspense fallback={<></>}>{renderBubbles}</Suspense>
                     </ErrorBoundary>

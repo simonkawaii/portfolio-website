@@ -15,10 +15,10 @@ const Home = () => {
   return (
     <>
       <DefaultLayout>
-        <Hero />
-        <About />
         <ErrorBoundary fallback={<></>}>
           <Suspense fallback={<></>}>
+        <Hero />
+        <About />
             <Skills />
             <Offer />
             <Portfolio />

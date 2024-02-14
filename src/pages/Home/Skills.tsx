@@ -1,8 +1,6 @@
-import { MotionValue, motion, useTransform } from "framer-motion";
+import {  motion,  } from "framer-motion";
 import AnimatedPhrase from "../../components/Hero/AnimatedPhrase";
 import Section from "../../components/Wrappers/Section";
-import { useScroll } from "framer-motion";
-import { useRef } from "react";
 const techStack = [
   {
     alt: "HTML 5",
@@ -110,14 +108,8 @@ const techStack = [
 ];
 
 const Skills = () => {
-  function useParallax(value: MotionValue<number>, distance: number) {
-    return useTransform(value, [0, 1], [-distance, distance]);
-  }
 
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref });
 
-  const y = useParallax(scrollYProgress, 50);
 
   const techStackMap = techStack.map(({ icon, alt, link }, index) => {
     if (!link) {
@@ -149,9 +141,7 @@ const Skills = () => {
         target="blank"
         key={`${icon}-${index}`}
         href={link ?? ""}
-        style={{
-          translateY: y,
-        }}
+ 
         className="hover:bg-gradient-to-r   from-accent/10 from-10%  to-purple-600/10   duration-300 hover:scale-110  rounded-[2rem] "
       >
         <div className="flex flex-col gap-4 text-center text-neutral-400 ">
@@ -165,7 +155,7 @@ const Skills = () => {
             </div>
             <img
               src={icon}
-              className="contrast-[1.15] brightness-110 aspect-square w-[3rem] h-[3rem] md:w-[4rem] md:h-[4rem]"
+              className="contrast-[1.15] brightness-110 aspect-square w-[2.5rem] h-[2.5rem] md:w-[4rem] md:h-[4rem]"
               alt={alt}
             />
           </div>
@@ -182,10 +172,9 @@ const Skills = () => {
           phrase={"My skills and technology stack"}
         />
       </Section>
-      <div className=" flex flex-col relative justify-center max-w-[100rem] w-full  items-center  m-auto gradient-mask-sides    overflow-x-auto overflow-y-hidden text-transparent">
+      <div className=" flex flex-col relative justify-center max-w-[100rem] w-full  items-center  m-auto gradient-mask-sides     overflow-hidden text-transparent">
         <motion.div
-          ref={ref}
-          className="motion-cards flex flex-wrap w-full min-w-[50rem] p-12  gap-8 items-center justify-center m-auto"
+          className="motion-cards flex flex-wrap w-full min-w-[40rem] p-12 gap-4  md:gap-8 items-center justify-center"
         >
           {techStackMap}
         </motion.div>
