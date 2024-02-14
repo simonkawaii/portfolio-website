@@ -1,12 +1,13 @@
 import React, { Suspense } from "react";
 import DefaultLayout from "../../layouts/DefaultLayout";
 
-import { ErrorBoundary } from "react-error-boundary";
 import Contact from "./Contact";
+import { ErrorBoundary } from "react-error-boundary";
 
 const Hero = React.lazy(() => import("../../components/Hero/Hero"));
 const About = React.lazy(() => import("./About"));
 const CodeSection = React.lazy(() => import("./CodeSection"));
+const Portfolio = React.lazy(() => import("./Portfolio"));
 const Offer = React.lazy(() => import("./Offer"));
 const Skills = React.lazy(() => import("./Skills"));
 
@@ -16,16 +17,11 @@ const Home = () => {
       <DefaultLayout>
         <Hero />
         <About />
-
-        <ErrorBoundary fallback={<>Error</>}>
+        <ErrorBoundary fallback={<></>}>
           <Suspense fallback={<></>}>
             <Skills />
             <Offer />
-          </Suspense>
-        </ErrorBoundary>
-
-        <ErrorBoundary fallback={<>Error</>}>
-          <Suspense fallback={<></>}>
+            <Portfolio />
             <CodeSection />
             <Contact />
           </Suspense>

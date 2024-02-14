@@ -1,4 +1,4 @@
-import { Button } from "../../components/Button/Button";
+import SubmitForm from "../../components/ContactForm/SubmitForm";
 
 const Contact = () => {
   return (
@@ -25,9 +25,10 @@ const Contact = () => {
               Email
             </label>
             <input
-              className=" py-4  appearance-none font-code text-3xl border-b border-neutral-800 rounded w-full  bg-transparent leading-tight focus:outline-none  focus:border-accent-opposite"
+              className=" py-4   appearance-none placeholder:text-neutral-400 placeholder:text-2xl placeholder:opacity-30 font-code text-3xl border-b border-neutral-800 rounded w-full  bg-transparent leading-tight focus:outline-none  focus:border-accent-opposite"
               id="contact-email"
               type="text"
+              placeholder="Here goes your E-mail"
             />
           </div>
           <div className="flex flex-col">
@@ -38,9 +39,10 @@ const Contact = () => {
               Title
             </label>
             <input
-              className=" py-4  appearance-none font-code text-3xl border-b border-neutral-800 rounded w-full  bg-transparent leading-tight focus:outline-none  focus:border-accent-opposite"
+              className=" py-4  appearance-none placeholder:text-neutral-400 placeholder:text-2xl placeholder:opacity-30 font-code text-3xl border-b border-neutral-800 rounded w-full  bg-transparent leading-tight focus:outline-none  focus:border-accent-opposite"
               id="contact-title"
               type="text"
+              placeholder="Title Your message"
             />
           </div>
           <div className="flex flex-col">
@@ -51,18 +53,18 @@ const Contact = () => {
               Message
             </label>
             <textarea
-              className=" py-4  appearance-none font-code text-3xl border-b border-neutral-800 rounded w-full  bg-transparent leading-tight  
-              focus:outline-none  focus:border-accent-opposite"
+              className=" py-4  appearance-none placeholder:text-neutral-400 placeholder:text-2xl placeholder:opacity-30 font-code text-3xl border-b border-neutral-800 rounded w-full  bg-transparent leading-tight  
+              focus:outline-none   focus:border-accent-opposite"
               name="contact-message"
               id="contact-message"
               cols={30}
               rows={10}
+              style={{ resize: "none" }}
               maxLength={1000}
+              placeholder="Write Your message!"
             ></textarea>
           </div>
-          <Button size={"bold"} variant={"secondary"} className="mt-24">
-            Message Me!
-          </Button>
+          <SubmitForm />
         </form>
       </div>
     </section>

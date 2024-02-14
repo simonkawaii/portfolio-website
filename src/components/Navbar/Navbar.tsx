@@ -18,9 +18,11 @@ const Navbar = () => {
       </div>
       <nav
         id="navbar"
-        className="xl:flex hidden w-full max-w-screen-xl items-center justify-between gap-8  "
+        className="xl:flex hidden w-full items-center justify-between gap-8  "
       >
-        <div>Szymon Kaliczak</div>
+        <div className="font-code motion-logo tracking-wider">
+          Szymon Kaliczak.portfolio
+        </div>
         <div className="flex absolute w-full left-0 right-0 justify-center items-center gap-8 ">
           <MenuLinks activeLink={activeLink} setActiveLink={setActiveLink} />
         </div>
@@ -32,15 +34,26 @@ const Navbar = () => {
         id="navbar"
         className="xl:hidden  flex w-full  items-center justify-between gap-8  "
       >
-        <div>Szymon Kaliczak</div>
+        <div className="font-code motion-logo tracking-wider">
+          Szymon Kaliczak.portfolio
+        </div>
 
         <button onClick={() => setOpenMenu(true)}>
           <span className=" sr-only">Close mobile menu</span>
 
-          <div className="flex flex-col gap-[3px]">
-            <span className="block w-10 h-[2px] bg-neutral-500 rounded-full"></span>
-            <span className="block w-10 h-[2px] bg-neutral-500 rounded-full"></span>
-            <span className="block w-10 h-[2px] bg-neutral-500 rounded-full"></span>
+          <div className="flex flex-col gap-[3px] ">
+            <svg
+              width="32"
+              height="19"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g className="[&>*]:fill-neutral-500">
+                <rect width="32" height="3" rx="1.5" />
+                <rect y="8" width="32" height="3" rx="1.5" />
+                <rect y="16" width="16" height="3" rx="1.5" />
+              </g>
+            </svg>
           </div>
         </button>
         <Modal isOpen={openMenu} handleClose={() => setOpenMenu(false)}>

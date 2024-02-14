@@ -1,34 +1,24 @@
-import { motion } from "framer-motion";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useLayoutEffect, useRef } from "react";
+import { MotionValue, motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const ScrollBox = () => {
+  function useParallax(value: MotionValue<number>, distance: number) {
+    return useTransform(value, [0, 1], [-distance, 0]);
+  }
+
   const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref });
 
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#home",
-        start: "0%",
-        end: "100%",
-        scrub: true,
-      },
-    });
-    timeline.to(ref.current, { y: "-100px" }, 0);
-  }, []);
+  const y = useParallax(scrollYProgress, 100);
   return (
     <motion.div
       id="scroll-box"
       ref={ref}
+      style={{ y }}
       className={`w-full p-24 duration-100 flex justify-center items-center `}
     >
       <motion.div
-        animate={{
-          transform: "translateY(2rem)",
-        }}
+        animate={{}}
         transition={{
           repeat: Infinity,
           duration: 2,
@@ -123,31 +113,6 @@ const ScrollBox = () => {
             </motion.g>
           </g>
         </svg>
-
-        {/* <svg
-        width="15"
-        height="54"
-        className="w-[1.25rem]"
-        viewBox="0 0 28 54"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g id="Group 2">
-          <path
-            id="Polygon 2"
-            strokeLinecap="round"
-            d="M14 54L1.87565 33L26.1244 33L14 54Z"
-            fill="white"
-          />
-          <path
-            id="Polygon 3"
-            className="-translate-y-2"
-            d="M14 28L1.87565 7L26.1244 7L14 28Z"
-            fill="white"
-            strokeLinecap="round"
-          />
-        </g>
-      </svg> */}
       </motion.div>
     </motion.div>
   );

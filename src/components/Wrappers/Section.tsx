@@ -38,37 +38,65 @@ interface SectionProps
     VariantProps<typeof SectionVariants> {
   children?: React.ReactNode;
   once?: boolean;
-  id: string;
+  id?: string;
+  animateSection?: boolean;
 }
 
 const Section = forwardRef<HTMLDivElement, SectionProps>(
   (
-    { children, className, variant, paddings, id, size, once = true, ...props },
+    {
+      children,
+      className,
+      variant,
+      paddings,
+      id,
+      size,
+      once = true,
+      animateSection = true,
+      ...props
+    },
     reactRef
   ) => {
     const container = useRef(null);
     const isInView = useInView(container, { once: once });
 
     return (
-      <section className="md:my-12" ref={container} id={id}>
-        <motion.div
-          variants={slideIn}
-          ref={reactRef}
-          initial="initial"
-          animate={isInView ? "visible" : "initial"}
-          className={cn(
-            SectionVariants({ variant, size, paddings, className })
-          )}
-          {...props}
-        >
-          {children}
-          {variant === "outline" ? (
-            <div className="absolute  z-[-1]  bottom-0 left-0 w-full overflow-hidden rounded-[inherit] content-[''] h-full">
-              <div className="absolute bottom-0 left-0 w-full  content-[''] blur-lg  rounded-[inherit] h-full border-2 border-neutral-600"></div>
-            </div>
-          ) : null}
-        </motion.div>
-      </section>
+      <motion.section className="md:my-12 duration-200" ref={container} id={id}>
+        {animateSection ? (
+          <motion.div
+            variants={slideIn}
+            ref={reactRef}
+            initial="initial"
+            animate={isInView ? "visible" : "initial"}
+            className={cn(
+              SectionVariants({ variant, size, paddings, className })
+            )}
+            {...props}
+          >
+            {children}
+            {variant === "outline" ? (
+              <div className="absolute  z-[-1]  bottom-0 left-0 w-full overflow-hidden rounded-[inherit] content-[''] h-full">
+                <div className="absolute bottom-0 left-0 w-full  content-[''] blur-lg  rounded-[inherit] h-full border-2 border-neutral-600"></div>
+              </div>
+            ) : null}
+          </motion.div>
+        ) : (
+          <motion.div
+            ref={reactRef}
+            className={cn(
+              SectionVariants({ variant, size, paddings, className })
+            )}
+            {...props}
+          >
+            {children}
+            {variant === "outline" ? (
+              <div className="absolute  z-[-1]  bottom-0 left-0 w-full overflow-hidden rounded-[inherit] content-[''] h-full">
+                <div className="absolute bottom-0 left-0 w-full  content-[''] blur-lg  rounded-[inherit] h-full border-2 border-neutral-600"></div>
+              </div>
+            ) : null}
+          </motion.div>
+        )}
+      </motion.section>
     );
   }
 );

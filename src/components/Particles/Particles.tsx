@@ -1,6 +1,7 @@
 import { useState, useRef, Suspense, ElementRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial, Preload } from "@react-three/drei";
+
 import * as random from "maath/random";
 import { useStarmode } from "../../Context/StarModeContext";
 

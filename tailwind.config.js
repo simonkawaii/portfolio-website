@@ -26,6 +26,16 @@ export default {
         },
       },
     },
+    animation: {
+      sidetoside: "slide 0.5s ease-in-out  ",
+    },
+    keyframes: {
+      slide: {
+        "0%, 100%": { transform: "translateX(0)" },
+        "25%,75%": { transform: "translateX(-5px)" },
+        "50%": { transform: "translateX(5px)" },
+      },
+    },
   },
   plugins: [],
 };

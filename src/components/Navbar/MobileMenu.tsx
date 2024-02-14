@@ -24,24 +24,8 @@ const MobileMenu: React.FC<IMenuButtonTypes> = ({
             e.stopPropagation();
           }}
         >
-          <div
-            style={{
-              justifyContent: "space-between",
-              display: "flex",
-              alignItems: "center",
-              height: "60px",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "3rem",
-                fontWeight: "600",
-                letterSpacing: "2px",
-                color: "var(--primary-color",
-              }}
-            >
-              MENU
-            </div>
+          <div className="flex justify-between items-center h-24">
+            <div className="text-[3rem] font-bold tracking-wide">MENU</div>
             <button
               type="button"
               onClick={() => {
@@ -49,21 +33,30 @@ const MobileMenu: React.FC<IMenuButtonTypes> = ({
               }}
             >
               <span className=" sr-only">Close mobile menu</span>
-              <span>close</span>
+              <svg
+                width="56"
+                height="56"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  id="Vector 2"
+                  d="M41 15L14.7987 41.2013"
+                  stroke="white"
+                  strokeWidth={3}
+                />
+                <path
+                  id="Vector 3"
+                  d="M41 41L14.7987 14.7987"
+                  stroke="white"
+                  strokeWidth={3}
+                />
+              </svg>
             </button>
           </div>
 
           <div>
-            <div
-              className="bg-inherit"
-              style={{
-                width: "100%",
-                height: "fit-content",
-                gap: "2rem",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
+            <div className="bg-inherit w-full h-fit gap-8 flex flex-col">
               {children}
             </div>
           </div>

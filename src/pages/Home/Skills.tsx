@@ -1,6 +1,8 @@
+import { MotionValue, motion, useTransform } from "framer-motion";
 import AnimatedPhrase from "../../components/Hero/AnimatedPhrase";
 import Section from "../../components/Wrappers/Section";
-
+import { useScroll } from "framer-motion";
+import { useRef } from "react";
 const techStack = [
   {
     alt: "HTML 5",
@@ -108,6 +110,15 @@ const techStack = [
 ];
 
 const Skills = () => {
+  function useParallax(value: MotionValue<number>, distance: number) {
+    return useTransform(value, [0, 1], [-distance, distance]);
+  }
+
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref });
+
+  const y = useParallax(scrollYProgress, 50);
+
   const techStackMap = techStack.map(({ icon, alt, link }, index) => {
     if (!link) {
       return (
@@ -134,11 +145,14 @@ const Skills = () => {
     }
 
     return (
-      <a
+      <motion.a
         target="blank"
         key={`${icon}-${index}`}
         href={link ?? ""}
-        className="hover:bg-gradient-to-r from-accent/10 from-10%  to-purple-600/10   duration-200 hover:scale-110  rounded-[2rem] "
+        style={{
+          translateY: y,
+        }}
+        className="hover:bg-gradient-to-r   from-accent/10 from-10%  to-purple-600/10   duration-300 hover:scale-110  rounded-[2rem] "
       >
         <div className="flex flex-col gap-4 text-center text-neutral-400 ">
           <div
@@ -156,7 +170,7 @@ const Skills = () => {
             />
           </div>
         </div>
-      </a>
+      </motion.a>
     );
   });
 
@@ -168,10 +182,13 @@ const Skills = () => {
           phrase={"My skills and technology stack"}
         />
       </Section>
-      <div className=" flex flex-col relative justify-center max-w-[100rem] w-full  items-center  m-auto gradient-mask-sides  overflow-x-auto  text-transparent">
-        <div className="flex flex-wrap w-full min-w-[50rem] p-12  gap-8 items-center justify-center m-auto">
+      <div className=" flex flex-col relative justify-center max-w-[100rem] w-full  items-center  m-auto gradient-mask-sides    overflow-x-auto overflow-y-hidden text-transparent">
+        <motion.div
+          ref={ref}
+          className="motion-cards flex flex-wrap w-full min-w-[50rem] p-12  gap-8 items-center justify-center m-auto"
+        >
           {techStackMap}
-        </div>
+        </motion.div>
       </div>
     </Section>
   );
